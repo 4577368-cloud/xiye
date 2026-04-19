@@ -10,7 +10,7 @@ module.exports = (env, argv) => {
 
   return {
     mode: isDev ? 'development' : 'production',
-    entry: './index.tsx',
+    entry: './src/index.tsx',
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: 'bundle.js'
@@ -63,7 +63,7 @@ module.exports = (env, argv) => {
         __VITE_SUPABASE_ANON_KEY__: JSON.stringify(process.env.VITE_SUPABASE_ANON_KEY || ''),
       }),
       new HtmlWebpackPlugin({
-        template: './index.html',
+        template: './src/index.html',
         inject: 'body'
       })
     ]

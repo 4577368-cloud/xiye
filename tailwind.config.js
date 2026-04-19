@@ -1,12 +1,12 @@
 module.exports = {
   content: [
-    './*.{js,jsx,ts,tsx}',
+    "./src/index.html", 
+    "./src/**/*.{js,ts,jsx,tsx}",
     './components/**/*.{js,jsx,ts,tsx}',
     './hook/**/*.{js,jsx,ts,tsx}',
     './data/**/*.{js,jsx,ts,tsx}',
     './supabase/**/*.{js,jsx,ts,tsx}',
     './types/**/*.{js,jsx,ts,tsx}',
-    './index.html'
   ],
   darkMode: 'class',
   theme: {
