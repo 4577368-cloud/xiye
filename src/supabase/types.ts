@@ -57,6 +57,9 @@ export type Database = {
           id: string
           name: string
           tags: string[] | null
+          workflow_group: string | null
+          step_order: number | null
+          is_favorite: boolean | null
         }
         Insert: {
           category: Database["public"]["Enums"]["command_category"]
@@ -66,6 +69,9 @@ export type Database = {
           id?: string
           name: string
           tags?: string[] | null
+          workflow_group?: string | null
+          step_order?: number | null
+          is_favorite?: boolean | null
         }
         Update: {
           category?: Database["public"]["Enums"]["command_category"]
@@ -75,6 +81,9 @@ export type Database = {
           id?: string
           name?: string
           tags?: string[] | null
+          workflow_group?: string | null
+          step_order?: number | null
+          is_favorite?: boolean | null
         }
         Relationships: []
       }
