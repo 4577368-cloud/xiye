@@ -27,8 +27,11 @@ export default function App() {
     loading,
     searchQuery,
     activeFilter,
+    availableTags,
+    activeTag,
     setSearchQuery,
     setActiveFilter,
+    setActiveTag,
     addTool,
     updateTool,
     deleteTool,
@@ -134,6 +137,9 @@ export default function App() {
             <FilterBar
               activeFilter={activeFilter}
               onFilterChange={setActiveFilter}
+              availableTags={availableTags}
+              activeTag={activeTag}
+              onTagChange={setActiveTag}
             />
             {loading ? (
               <div className="flex items-center justify-center py-24">

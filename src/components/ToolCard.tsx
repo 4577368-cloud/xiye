@@ -69,9 +69,9 @@ export function ToolCard({ tool, isFavorite, onToggleFavorite, onClick }: ToolCa
             {tool.description}
           </p>
 
-          <div className="flex flex-wrap gap-1.5">
+          <div className="flex items-center gap-1.5 overflow-hidden">
             {tool.tags.slice(0, 3).map((tag) => (
-              <span key={tag} className="text-[11px] text-white/40 px-2 py-1 bg-white/[0.04] rounded-sm">
+              <span key={tag} className="text-[11px] text-white/40 px-2 py-1 bg-white/[0.04] rounded-sm truncate flex-shrink-0 max-w-[80px]">
                 {tag}
               </span>
             ))}

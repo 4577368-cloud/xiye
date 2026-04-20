@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { supabase } from '../supabase/client';
 import { AITool, FilterType, ToolType } from '../types';
 import { toolsData as localToolsData } from '../data/tools';
@@ -9,6 +9,7 @@ export function useSupabaseTools() {
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeFilter, setActiveFilter] = useState<FilterType>('all');
+  const [activeTag, setActiveTag] = useState<string | null>(null);
 
   const fetchTools = useCallback(async () => {
     const baseTools = [...localToolsData, ...extendedToolsData];
@@ -153,20 +154,43 @@ export function useSupabaseTools() {
       tool.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       tool.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
       tool.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
-    return matchesFilter && matchesSearch;
+    const matchesTag = activeTag === null || tool.tags.includes(activeTag);
+    return matchesFilter && matchesSearch && matchesTag;
   });
 
   const featuredTools = tools.filter((tool: AITool) => tool.featured);
+
+  // 计算所有可用标签
+  const allTags = useMemo(() => {
+    const tagSet = new Set<string>();
+    tools.forEach(tool => {
+      tool.tags.forEach(tag => tagSet.add(tag));
+    });
+    return Array.from(tagSet).sort();
+  }, [tools]);
+
+  // 根据当前筛选条件计算可用的标签
+  const availableTags = useMemo(() => {
+    const tagSet = new Set<string>();
+    filteredTools.forEach(tool => {
+      tool.tags.forEach(tag => tagSet.add(tag));
+    });
+    return Array.from(tagSet).sort();
+  }, [filteredTools]);
 
   return {
     tools: filteredTools,
     allTools: tools,
     featuredTools,
+    allTags,
+    availableTags,
     loading,
     searchQuery,
     activeFilter,
+    activeTag,
     setSearchQuery,
     setActiveFilter,
+    setActiveTag,
     addTool,
     updateTool,
     deleteTool,

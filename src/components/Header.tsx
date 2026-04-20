@@ -65,15 +65,6 @@ export function Header({
             命令
           </button>
           <button
-            onClick={() => onTabChange?.('favorites')}
-            className={`px-4 py-2 text-sm transition-colors flex items-center gap-1.5 ${
-              activeTab === 'favorites' ? 'text-white' : 'text-white/70 hover:text-white'
-            }`}
-          >
-            <i className="fa-solid fa-star text-xs" />
-            收藏
-          </button>
-          <button
             onClick={() => onTabChange?.('prompts')}
             className={`px-4 py-2 text-sm transition-colors flex items-center gap-1.5 ${
               activeTab === 'prompts' ? 'text-white' : 'text-white/70 hover:text-white'
@@ -81,6 +72,15 @@ export function Header({
           >
             <i className="fa-solid fa-lightbulb text-xs" />
             提示词
+          </button>
+          <button
+            onClick={() => onTabChange?.('favorites')}
+            className={`px-4 py-2 text-sm transition-colors flex items-center gap-1.5 ${
+              activeTab === 'favorites' ? 'text-white' : 'text-white/70 hover:text-white'
+            }`}
+          >
+            <i className="fa-solid fa-star text-xs" />
+            收藏
           </button>
         </nav>
 
