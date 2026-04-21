@@ -16,7 +16,7 @@ export const toolsData: AITool[] = [
     type: 'ai-product',
     url: 'https://chat.openai.com',
     description: 'OpenAI开发的对话式AI助手，支持自然语言交互和多种任务处理',
-    tags: ['对话', '写作', '编程', '通用'],
+    tags: ['AI对话', 'AI写作', 'AI编程'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/openai/openai-original.svg',
     featured: true,
   },
@@ -26,7 +26,7 @@ export const toolsData: AITool[] = [
     type: 'ai-product',
     url: 'https://www.midjourney.com',
     description: '基于Discord的AI图像生成工具，可创建高质量艺术图像',
-    tags: ['图像生成', '设计', '艺术'],
+    tags: ['图像生成', '设计'],
     icon: 'https://api.dicebear.com/7.x/identicon/svg?seed=midjourney',
     featured: true,
   },
@@ -36,7 +36,7 @@ export const toolsData: AITool[] = [
     type: 'ai-product',
     url: 'https://claude.ai',
     description: 'Anthropic开发的AI助手，擅长长文本处理和复杂推理',
-    tags: ['对话', '写作', '分析'],
+    tags: ['AI对话', '长文本', 'AI分析'],
     icon: 'https://api.dicebear.com/7.x/identicon/svg?seed=claude',
     featured: true,
   },
@@ -46,7 +46,7 @@ export const toolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/features/copilot',
     description: 'GitHub推出的AI编程助手，提供代码补全和建议',
-    tags: ['编程', '代码补全', '开发工具'],
+    tags: ['AI编程', '代码补全'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
     featured: true,
   },
@@ -56,7 +56,7 @@ export const toolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/Stability-AI/stablediffusion',
     description: '开源的文本到图像生成模型，支持本地部署',
-    tags: ['图像生成', '开源', '本地部署'],
+    tags: ['图像生成', '开源模型'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -65,7 +65,7 @@ export const toolsData: AITool[] = [
     type: 'app',
     url: 'https://www.notion.so/product/ai',
     description: 'Notion内置的AI写作助手，支持内容生成和编辑',
-    tags: ['写作', '笔记', '生产力'],
+    tags: ['AI写作', '笔记'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/notion/notion-original.svg',
   },
   {
@@ -74,7 +74,7 @@ export const toolsData: AITool[] = [
     type: 'website',
     url: 'https://www.figma.com/ai',
     description: 'Figma的设计AI功能，支持设计生成和原型制作',
-    tags: ['设计', 'UI/UX', '原型'],
+    tags: ['设计', 'UI/UX'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg',
   },
   {
@@ -83,7 +83,7 @@ export const toolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/Significant-Gravitas/AutoGPT',
     description: '实验性的自主AI代理，可自动完成复杂任务',
-    tags: ['自动化', '代理', '实验性'],
+    tags: ['AI代理', '自动化'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -92,7 +92,7 @@ export const toolsData: AITool[] = [
     type: 'website',
     url: 'https://runwayml.com',
     description: 'AI驱动的创意工具平台，支持视频编辑和图像生成',
-    tags: ['视频', '图像生成', '创意'],
+    tags: ['视频生成', '图像生成'],
     icon: 'https://api.dicebear.com/7.x/identicon/svg?seed=runway',
   },
   {
@@ -101,7 +101,7 @@ export const toolsData: AITool[] = [
     type: 'skill',
     url: 'https://www.promptingguide.ai',
     description: '提示工程完整指南，学习如何优化AI提示词',
-    tags: ['提示工程', '学习', '技能'],
+    tags: ['提示工程'],
     icon: 'fa-book-open',
   },
   {
@@ -110,7 +110,7 @@ export const toolsData: AITool[] = [
     type: 'website',
     url: 'https://huggingface.co',
     description: 'AI模型和数据集社区，提供大量预训练模型',
-    tags: ['模型', '社区', '开源'],
+    tags: ['模型库'],
     icon: 'https://api.dicebear.com/7.x/identicon/svg?seed=huggingface',
   },
   {
@@ -119,7 +119,7 @@ export const toolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/langchain-ai/langchain',
     description: '构建LLM应用的框架，支持多种模型和工具集成',
-    tags: ['框架', '开发', 'LLM'],
+    tags: ['LLM框架', '开发'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -128,7 +128,7 @@ export const toolsData: AITool[] = [
     type: 'ai-product',
     url: 'https://openai.com/dall-e-3',
     description: 'OpenAI的图像生成模型，支持高质量图像创作',
-    tags: ['图像生成', '设计', '艺术'],
+    tags: ['图像生成', '设计'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/openai/openai-original.svg',
   },
   {
@@ -137,7 +137,7 @@ export const toolsData: AITool[] = [
     type: 'website',
     url: 'https://www.perplexity.ai',
     description: 'AI搜索引擎，提供带引用来源的答案',
-    tags: ['搜索', '研究', '信息'],
+    tags: ['AI搜索', '研究'],
     icon: 'https://api.dicebear.com/7.x/identicon/svg?seed=perplexity',
   },
   {
@@ -146,7 +146,7 @@ export const toolsData: AITool[] = [
     type: 'app',
     url: 'https://cursor.sh',
     description: 'AI驱动的代码编辑器，基于VS Code构建',
-    tags: ['编程', '编辑器', '开发工具'],
+    tags: ['AI编程', '代码编辑器'],
     icon: 'https://api.dicebear.com/7.x/identicon/svg?seed=cursor',
   },
   {
@@ -155,7 +155,7 @@ export const toolsData: AITool[] = [
     type: 'website',
     url: 'https://replicate.com',
     description: '运行开源机器学习模型的云平台',
-    tags: ['模型', 'API', '部署'],
+    tags: ['模型API', '模型部署'],
     icon: 'https://api.dicebear.com/7.x/identicon/svg?seed=replicate',
   },
   {
@@ -164,7 +164,7 @@ export const toolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/vercel/ai',
     description: '构建AI应用的开发工具包，支持流式响应',
-    tags: ['框架', '开发', '流式'],
+    tags: ['AI框架', '流式响应'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -173,7 +173,7 @@ export const toolsData: AITool[] = [
     type: 'skill',
     url: 'https://docs.anthropic.com',
     description: 'Claude API文档，学习如何集成Claude到应用',
-    tags: ['API', '文档', '集成'],
+    tags: ['API文档'],
     icon: 'fa-code',
   },
   {
@@ -182,7 +182,7 @@ export const toolsData: AITool[] = [
     type: 'ai-product',
     url: 'https://openai.com/sora',
     description: 'OpenAI的视频生成模型，可创建高质量视频内容',
-    tags: ['视频生成', '创意', 'AI产品'],
+    tags: ['视频生成'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/openai/openai-original.svg',
   },
   {
@@ -191,7 +191,7 @@ export const toolsData: AITool[] = [
     type: 'app',
     url: 'https://poe.com',
     description: 'Quora推出的AI聊天平台，聚合多种AI模型',
-    tags: ['对话', '聚合', '聊天'],
+    tags: ['AI对话', '模型聚合'],
     icon: 'https://api.dicebear.com/7.x/identicon/svg?seed=poe',
   },
 ];

@@ -60,7 +60,7 @@ export function ToolCard({ tool, isFavorite, onToggleFavorite, onClick }: ToolCa
             <h3 className="text-[15px] font-semibold text-white/90 tracking-tight truncate">
               {tool.name}
             </h3>
-            <span className={`text-[11px] px-2 py-0.5 border rounded-sm ${config.accent} font-medium tracking-wide`}>
+            <span className={`text-[11px] px-2 py-0.5 border rounded-sm ${config.accent} font-medium tracking-wide whitespace-nowrap flex-shrink-0`}>
               {config.label}
             </span>
           </div>
@@ -69,9 +69,9 @@ export function ToolCard({ tool, isFavorite, onToggleFavorite, onClick }: ToolCa
             {tool.description}
           </p>
 
-          <div className="flex items-center gap-1.5 overflow-hidden">
+          <div className="flex items-center gap-1.5 overflow-hidden whitespace-nowrap">
             {tool.tags.slice(0, 3).map((tag) => (
-              <span key={tag} className="text-[11px] text-white/40 px-2 py-1 bg-white/[0.04] rounded-sm truncate flex-shrink-0 max-w-[80px]">
+              <span key={tag} className="text-[11px] text-white/40 px-2 py-1 bg-white/[0.04] rounded-sm truncate flex-shrink-0 max-w-[70px]">
                 {tag}
               </span>
             ))}

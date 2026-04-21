@@ -54,13 +54,13 @@ export function FilterBar({
         ))}
       </div>
 
-      {/* 标签筛选 */}
+      {/* 标签筛选 - 允许多行显示 */}
       {availableTags.length > 0 && (
-        <div className="flex items-center gap-2 overflow-x-auto scrollbar-hide">
-          <span className="text-xs text-zinc-500 flex-shrink-0">标签:</span>
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="text-xs text-zinc-500">标签:</span>
           <button
             onClick={() => onTagChange?.(null)}
-            className={`text-xs px-2 py-1 rounded-sm transition-colors flex-shrink-0 ${
+            className={`text-xs px-2 py-1 rounded-sm transition-colors ${
               activeTag === null
                 ? 'bg-white text-black'
                 : 'bg-white/10 text-zinc-400 hover:bg-white/20'
@@ -72,7 +72,7 @@ export function FilterBar({
             <button
               key={tag}
               onClick={() => onTagChange?.(tag === activeTag ? null : tag)}
-              className={`text-xs px-2 py-1 rounded-sm transition-colors flex-shrink-0 ${
+              className={`text-xs px-2 py-1 rounded-sm transition-colors ${
                 activeTag === tag
                   ? 'bg-white text-black'
                   : 'bg-white/10 text-zinc-400 hover:bg-white/20'

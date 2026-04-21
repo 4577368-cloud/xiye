@@ -1,7 +1,8 @@
 module.exports = {
   content: [
     "./src/index.html",
-    "./src/**/*.{js,ts,jsx,tsx}"
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "!./src/node_modules/**",
   ],
   darkMode: 'class',
   theme: {

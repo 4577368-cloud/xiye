@@ -7,7 +7,7 @@ export const extendedToolsData: AITool[] = [
     type: 'ai-product',
     url: 'https://gemini.google.com',
     description: 'Google开发的多模态AI模型，支持文本、图像、音频和视频理解',
-    tags: ['对话', '多模态', '搜索', '谷歌'],
+    tags: ['AI对话', 'AI搜索'],
     icon: 'https://api.dicebear.com/7.x/identicon/svg?seed=gemini',
     featured: true,
   },
@@ -17,7 +17,7 @@ export const extendedToolsData: AITool[] = [
     type: 'ai-product',
     url: 'https://copilot.microsoft.com',
     description: '微软AI助手，集成Bing搜索和GPT-4技术',
-    tags: ['对话', '搜索', '微软', '办公'],
+    tags: ['AI对话', 'AI搜索'],
     icon: 'https://api.dicebear.com/7.x/identicon/svg?seed=copilot',
     featured: true,
   },
@@ -27,7 +27,7 @@ export const extendedToolsData: AITool[] = [
     type: 'website',
     url: 'https://leonardo.ai',
     description: '专业AI图像生成平台，支持多种艺术风格和模型',
-    tags: ['图像生成', '设计', '艺术', '游戏'],
+    tags: ['图像生成', '设计'],
     icon: 'https://api.dicebear.com/7.x/identicon/svg?seed=leonardo',
   },
   {
@@ -36,7 +36,7 @@ export const extendedToolsData: AITool[] = [
     type: 'website',
     url: 'https://console.anthropic.com',
     description: 'Claude API控制台，管理和监控API使用情况',
-    tags: ['API', '控制台', '开发'],
+    tags: ['API', '开发'],
     icon: 'https://api.dicebear.com/7.x/identicon/svg?seed=anthropic',
   },
   {
@@ -55,7 +55,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/shadcn-ui/ui',
     description: '精美的React组件库，使用Radix UI和Tailwind CSS构建',
-    tags: ['UI组件', 'React', 'Tailwind', '开源'],
+    tags: ['UI组件', 'React', 'Tailwind'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
     featured: true,
   },
@@ -65,7 +65,7 @@ export const extendedToolsData: AITool[] = [
     type: 'website',
     url: 'https://ui.aceternity.com',
     description: '现代React组件和动画效果集合',
-    tags: ['UI组件', '动画', 'React', '设计'],
+    tags: ['UI组件', 'React', '设计'],
     icon: 'https://api.dicebear.com/7.x/identicon/svg?seed=aceternity',
   },
   {
@@ -74,7 +74,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/magicui/magicui',
     description: '150+免费开源的React动画组件和效果',
-    tags: ['UI组件', '动画', 'React', '开源'],
+    tags: ['UI组件', 'React'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -83,7 +83,7 @@ export const extendedToolsData: AITool[] = [
     type: 'app',
     url: 'https://www.framer.com',
     description: '专业网站设计工具，支持AI生成和可视化编辑',
-    tags: ['设计', '网站构建', '无代码', 'AI'],
+    tags: ['设计', '无代码', 'AI'],
     icon: 'https://api.dicebear.com/7.x/identicon/svg?seed=framer',
   },
   {
@@ -92,7 +92,7 @@ export const extendedToolsData: AITool[] = [
     type: 'website',
     url: 'https://webflow.com',
     description: '可视化网站构建平台，专业级设计到代码转换',
-    tags: ['网站构建', '无代码', '设计', 'CMS'],
+    tags: ['无代码', '设计'],
     icon: 'https://api.dicebear.com/7.x/identicon/svg?seed=webflow',
   },
   {
@@ -101,7 +101,7 @@ export const extendedToolsData: AITool[] = [
     type: 'website',
     url: 'https://lovable.dev',
     description: 'AI驱动的全栈应用生成器，从想法到部署',
-    tags: ['全栈开发', 'AI生成', '无代码', '部署'],
+    tags: ['全栈开发', '无代码', '部署'],
     icon: 'https://api.dicebear.com/7.x/identicon/svg?seed=lovable',
     featured: true,
   },
@@ -111,7 +111,7 @@ export const extendedToolsData: AITool[] = [
     type: 'website',
     url: 'https://bolt.new',
     description: 'StackBlitz的AI开发环境，即时创建和部署全栈应用',
-    tags: ['开发环境', 'AI生成', '全栈', '部署'],
+    tags: ['全栈', '部署'],
     icon: 'https://api.dicebear.com/7.x/identicon/svg?seed=bolt',
     featured: true,
   },
@@ -121,7 +121,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/meta-llama/llama',
     description: 'Meta开源的大语言模型，支持本地部署',
-    tags: ['LLM', '开源', '本地部署', 'Meta'],
+    tags: ['LLM', '本地部署', 'Meta'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -130,7 +130,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/ollama/ollama',
     description: '在本地运行大语言模型的工具，简单易用',
-    tags: ['LLM', '本地部署', '开源', '工具'],
+    tags: ['LLM', '本地部署'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
     featured: true,
   },
@@ -167,7 +167,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/vercel/ai-chatbot',
     description: 'Vercel官方AI聊天机器人模板',
-    tags: ['模板', 'Next.js', 'AI', '聊天'],
+    tags: ['Next.js', 'AI', '聊天'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -176,7 +176,7 @@ export const extendedToolsData: AITool[] = [
     type: 'website',
     url: 'https://supabase.com',
     description: '开源Firebase替代方案，PostgreSQL数据库和实时功能',
-    tags: ['数据库', '后端', '开源', '实时'],
+    tags: ['数据库', '后端', '实时'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg',
     featured: true,
   },
@@ -195,7 +195,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/drizzle-team/drizzle-orm',
     description: 'TypeScript优先的ORM，类型安全且轻量',
-    tags: ['ORM', 'TypeScript', '数据库', '轻量'],
+    tags: ['ORM', 'TypeScript', '数据库'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -213,7 +213,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/pmndrs/zustand',
     description: '轻量级React状态管理库',
-    tags: ['状态管理', 'React', '轻量', '开源'],
+    tags: ['状态管理', 'React'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -222,7 +222,7 @@ export const extendedToolsData: AITool[] = [
     type: 'website',
     url: 'https://tanstack.com/query',
     description: '强大的异步状态管理库，用于React、Vue等',
-    tags: ['数据获取', '缓存', 'React', '异步'],
+    tags: ['React'],
     icon: 'https://api.dicebear.com/7.x/identicon/svg?seed=tanstack',
   },
   {
@@ -231,7 +231,7 @@ export const extendedToolsData: AITool[] = [
     type: 'skill',
     url: 'https://tanstack.com/query/latest/docs/react/overview',
     description: 'React数据获取和缓存的最佳实践',
-    tags: ['React', '数据获取', '缓存', '技能'],
+    tags: ['React'],
     icon: 'fa-code',
   },
   {
@@ -286,7 +286,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/nextui-org/nextui',
     description: '美观、快速、现代的React UI库',
-    tags: ['UI组件', 'React', '现代', '美观'],
+    tags: ['UI组件', 'React', '美观'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -304,7 +304,7 @@ export const extendedToolsData: AITool[] = [
     type: 'website',
     url: 'https://flowbite.com',
     description: '基于Tailwind CSS的开源组件库',
-    tags: ['UI组件', 'Tailwind', '开源', '组件'],
+    tags: ['UI组件', 'Tailwind', '组件'],
     icon: 'https://api.dicebear.com/7.x/identicon/svg?seed=flowbite',
   },
   {
@@ -313,7 +313,7 @@ export const extendedToolsData: AITool[] = [
     type: 'website',
     url: 'https://preline.co',
     description: '开源Tailwind CSS UI组件套件',
-    tags: ['UI组件', 'Tailwind', '开源', '套件'],
+    tags: ['UI组件', 'Tailwind', '套件'],
     icon: 'https://api.dicebear.com/7.x/identicon/svg?seed=preline',
   },
   {
@@ -322,7 +322,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/markmead/hyperui',
     description: '免费开源的Tailwind CSS组件集合',
-    tags: ['UI组件', 'Tailwind', '免费', '开源'],
+    tags: ['UI组件', 'Tailwind', '免费'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -331,7 +331,7 @@ export const extendedToolsData: AITool[] = [
     type: 'website',
     url: 'https://tailblocks.cc',
     description: '即用型Tailwind CSS区块模板',
-    tags: ['模板', 'Tailwind', '区块', '即用'],
+    tags: ['Tailwind'],
     icon: 'https://api.dicebear.com/7.x/identicon/svg?seed=tailblocks',
   },
   {
@@ -340,7 +340,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/bakateam/merakiui',
     description: '现代Tailwind CSS组件集合',
-    tags: ['UI组件', 'Tailwind', '现代', '集合'],
+    tags: ['UI组件', 'Tailwind', '集合'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -349,7 +349,7 @@ export const extendedToolsData: AITool[] = [
     type: 'website',
     url: 'https://kit.kometa.co',
     description: 'Tailwind CSS UI组件和模板',
-    tags: ['UI组件', 'Tailwind', '模板', '套件'],
+    tags: ['UI组件', 'Tailwind', '套件'],
     icon: 'https://api.dicebear.com/7.x/identicon/svg?seed=kometa',
   },
   {
@@ -358,7 +358,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/saas-js/saas-ui',
     description: '构建SaaS应用的React组件库',
-    tags: ['UI组件', 'SaaS', 'React', '商业'],
+    tags: ['UI组件', 'React', '商业'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -376,7 +376,7 @@ export const extendedToolsData: AITool[] = [
     type: 'skill',
     url: 'https://react-chartjs-2.js.org',
     description: 'Chart.js的React封装，轻松创建图表',
-    tags: ['图表', 'React', '数据可视化', '技能'],
+    tags: ['图表', 'React', '数据可视化'],
     icon: 'fa-chart-line',
   },
   {
@@ -421,7 +421,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/mermaid-js/mermaid',
     description: '基于Markdown的图表和流程图生成',
-    tags: ['图表', 'Markdown', '流程图', '文档'],
+    tags: ['图表', 'Markdown', '文档'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -439,7 +439,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/tldraw/tldraw',
     description: '可扩展的React白板组件',
-    tags: ['白板', 'React', '组件', '可扩展'],
+    tags: ['白板', 'React', '组件'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -448,7 +448,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/xyflow/xyflow',
     description: '高度可定制的React流程图库',
-    tags: ['流程图', 'React', '节点', '可定制'],
+    tags: ['React'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -457,7 +457,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/clauderic/dnd-kit',
     description: '现代React拖拽工具包',
-    tags: ['拖拽', 'React', '交互', '工具包'],
+    tags: ['React'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -466,7 +466,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/atlassian/react-beautiful-dnd',
     description: 'Atlassian出品的React拖拽库',
-    tags: ['拖拽', 'React', 'Atlassian', '列表'],
+    tags: ['React', 'Atlassian'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -475,7 +475,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/framer/motion',
     description: 'React生产级动画库',
-    tags: ['动画', 'React', '生产级', '流畅'],
+    tags: ['React', '生产级', '流畅'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
     featured: true,
   },
@@ -485,7 +485,7 @@ export const extendedToolsData: AITool[] = [
     type: 'website',
     url: 'https://greensock.com/gsap',
     description: '专业级JavaScript动画库',
-    tags: ['动画', 'JavaScript', '专业', '高性能'],
+    tags: ['JavaScript', '专业', '高性能'],
     icon: 'https://api.dicebear.com/7.x/identicon/svg?seed=gsap',
   },
   {
@@ -494,7 +494,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/pmndrs/react-spring',
     description: '基于弹簧物理的React动画库',
-    tags: ['动画', 'React', '物理', '弹簧'],
+    tags: ['React', '物理', '弹簧'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -503,7 +503,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/formkit/auto-animate',
     description: '零配置的JavaScript动画工具',
-    tags: ['动画', '零配置', 'JavaScript', '简单'],
+    tags: ['零配置', 'JavaScript', '简单'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -512,7 +512,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/airbnb/lottie-web',
     description: 'After Effects动画导出为JSON并在Web播放',
-    tags: ['动画', 'After Effects', 'JSON', 'Airbnb'],
+    tags: ['After Effects', 'JSON', 'Airbnb'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -521,7 +521,7 @@ export const extendedToolsData: AITool[] = [
     type: 'website',
     url: 'https://rive.app',
     description: '实时交互式动画工具',
-    tags: ['动画', '交互', '实时', '设计'],
+    tags: ['实时', '设计'],
     icon: 'https://api.dicebear.com/7.x/identicon/svg?seed=rive',
   },
   {
@@ -530,7 +530,7 @@ export const extendedToolsData: AITool[] = [
     type: 'website',
     url: 'https://spline.design',
     description: '3D设计工具，创建交互式3D体验',
-    tags: ['3D', '设计', '交互', 'WebGL'],
+    tags: ['3D', '设计', 'WebGL'],
     icon: 'https://api.dicebear.com/7.x/identicon/svg?seed=spline',
   },
   {
@@ -567,7 +567,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/pmndrs/leva',
     description: 'React的GUI控制面板组件',
-    tags: ['GUI', 'React', '控制面板', '调试'],
+    tags: ['GUI', 'React', '控制面板'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -576,7 +576,7 @@ export const extendedToolsData: AITool[] = [
     type: 'skill',
     url: 'https://github.com/pmndrs/zustand',
     description: 'Zustand状态管理的调试技巧',
-    tags: ['调试', '状态管理', 'Zustand', '技能'],
+    tags: ['状态管理', 'Zustand'],
     icon: 'fa-bug',
   },
   {
@@ -585,7 +585,7 @@ export const extendedToolsData: AITool[] = [
     type: 'skill',
     url: 'https://react.dev/learn/thinking-in-react',
     description: 'React开发者工具使用指南',
-    tags: ['调试', 'React', '开发工具', '技能'],
+    tags: ['React', '开发工具'],
     icon: 'fa-tools',
   },
   {
@@ -594,7 +594,7 @@ export const extendedToolsData: AITool[] = [
     type: 'skill',
     url: 'https://developer.chrome.com/docs/devtools',
     description: 'Chrome开发者工具完整指南',
-    tags: ['调试', 'Chrome', '开发工具', '性能'],
+    tags: ['Chrome', '开发工具', '性能'],
     icon: 'fa-chrome',
   },
   {
@@ -603,7 +603,7 @@ export const extendedToolsData: AITool[] = [
     type: 'app',
     url: 'https://code.visualstudio.com',
     description: '最流行的代码编辑器',
-    tags: ['编辑器', '开发', '微软', '扩展'],
+    tags: ['编辑器', '开发', '扩展'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg',
     featured: true,
   },
@@ -622,7 +622,7 @@ export const extendedToolsData: AITool[] = [
     type: 'app',
     url: 'https://www.sublimetext.com',
     description: '轻量级但功能强大的文本编辑器',
-    tags: ['编辑器', '轻量', '快速', '文本'],
+    tags: ['编辑器', '文本'],
     icon: 'https://api.dicebear.com/7.x/identicon/svg?seed=sublime',
   },
   {
@@ -640,7 +640,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/helix-editor/helix',
     description: '后现代模态文本编辑器',
-    tags: ['编辑器', '模态', 'Rust', '现代'],
+    tags: ['编辑器', '模态', 'Rust'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -649,7 +649,7 @@ export const extendedToolsData: AITool[] = [
     type: 'app',
     url: 'https://www.warp.dev',
     description: '现代化的Rust终端',
-    tags: ['终端', 'Rust', '现代', 'AI'],
+    tags: ['终端', 'Rust', 'AI'],
     icon: 'https://api.dicebear.com/7.x/identicon/svg?seed=warp',
   },
   {
@@ -685,7 +685,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/romkatv/powerlevel10k',
     description: 'Zsh的极速主题',
-    tags: ['Shell', 'Zsh', '主题', '快速'],
+    tags: ['Shell', 'Zsh', '主题'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -694,7 +694,7 @@ export const extendedToolsData: AITool[] = [
     type: 'website',
     url: 'https://brew.sh',
     description: 'macOS缺失的包管理器',
-    tags: ['包管理', 'macOS', '工具', '安装'],
+    tags: ['包管理', 'macOS', '安装'],
     icon: 'https://api.dicebear.com/7.x/identicon/svg?seed=homebrew',
   },
   {
@@ -703,7 +703,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/asdf-vm/asdf',
     description: '多语言版本管理器',
-    tags: ['版本管理', '多语言', '工具', '开发'],
+    tags: ['开发'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -712,7 +712,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/nvm-sh/nvm',
     description: 'Node.js版本管理器',
-    tags: ['Node.js', '版本管理', '工具', '开发'],
+    tags: ['Node.js', '开发'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -721,7 +721,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/Schniz/fnm',
     description: '快速的Node.js版本管理器',
-    tags: ['Node.js', '版本管理', 'Rust', '快速'],
+    tags: ['Node.js', 'Rust'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -730,7 +730,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/pnpm/pnpm',
     description: '快速、节省磁盘空间的包管理器',
-    tags: ['包管理', 'Node.js', '快速', '高效'],
+    tags: ['包管理', 'Node.js', '高效'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
     featured: true,
   },
@@ -749,7 +749,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/oven-sh/bun',
     description: '极速JavaScript运行时和工具包',
-    tags: ['运行时', 'JavaScript', '快速', 'Zig'],
+    tags: ['运行时', 'JavaScript', 'Zig'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
     featured: true,
   },
@@ -759,7 +759,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/denoland/deno',
     description: '现代JavaScript和TypeScript运行时',
-    tags: ['运行时', 'TypeScript', '现代', '安全'],
+    tags: ['运行时', 'TypeScript', '安全'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -778,7 +778,7 @@ export const extendedToolsData: AITool[] = [
     type: 'website',
     url: 'https://www.typescriptlang.org',
     description: 'JavaScript的超集，添加类型系统',
-    tags: ['类型系统', 'JavaScript', '微软', '开发'],
+    tags: ['类型系统', 'JavaScript', '开发'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
     featured: true,
   },
@@ -788,7 +788,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/eslint/eslint',
     description: '可配置的JavaScript代码检查工具',
-    tags: ['代码检查', 'JavaScript', '质量', '规范'],
+    tags: ['代码检查', 'JavaScript', '规范'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -797,7 +797,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/prettier/prettier',
     description: '固执的代码格式化工具',
-    tags: ['格式化', '代码风格', '美化', '一致'],
+    tags: ['工具'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -806,7 +806,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/typicode/husky',
     description: 'Git钩子工具，改善提交',
-    tags: ['Git', '钩子', '提交', '质量'],
+    tags: ['Git', '钩子', '提交'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -815,7 +815,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/conventional-changelog/commitlint',
     description: '规范Git提交信息',
-    tags: ['Git', '提交', '规范', '质量'],
+    tags: ['Git', '提交', '规范'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -824,7 +824,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/okonet/lint-staged',
     description: '对暂存文件运行代码检查',
-    tags: ['Git', '代码检查', '暂存', '质量'],
+    tags: ['Git', '代码检查', '暂存'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -833,7 +833,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/nrwl/nx',
     description: '智能、快速、可扩展的构建系统',
-    tags: ['构建', 'Monorepo', '可扩展', '智能'],
+    tags: ['Monorepo'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -842,7 +842,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/vercel/turborepo',
     description: '高性能JavaScript/TypeScript Monorepo工具',
-    tags: ['Monorepo', '构建', 'Vercel', '性能'],
+    tags: ['Monorepo', 'Vercel', '性能'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -851,7 +851,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/changesets/changesets',
     description: 'Monorepo版本管理和变更日志',
-    tags: ['版本管理', 'Monorepo', '变更日志', '发布'],
+    tags: ['Monorepo', '变更日志'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -860,7 +860,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/semantic-release/semantic-release',
     description: '全自动版本管理和包发布',
-    tags: ['发布', '版本管理', '自动化', 'CI/CD'],
+    tags: ['自动化', 'CI/CD'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -916,7 +916,7 @@ export const extendedToolsData: AITool[] = [
     type: 'website',
     url: 'https://planetscale.com',
     description: 'MySQL平台，开发者优先',
-    tags: ['数据库', 'MySQL', 'Serverless', '平台'],
+    tags: ['数据库', 'MySQL', 'Serverless'],
     icon: 'https://api.dicebear.com/7.x/identicon/svg?seed=planetscale',
   },
   {
@@ -925,7 +925,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/langchain-ai/langchain',
     description: '构建LLM应用的框架，支持Python和JavaScript',
-    tags: ['LLM', '框架', 'AI', 'Python', 'JavaScript'],
+    tags: ['LLM', '框架', 'AI', 'Python'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
     featured: true,
   },
@@ -935,7 +935,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/langchain-ai/langgraph',
     description: 'LangChain的状态机工作流扩展，构建复杂AI代理',
-    tags: ['LLM', '工作流', 'AI', '代理', '状态机'],
+    tags: ['LLM', '工作流', 'AI', '代理'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -944,7 +944,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/BerriAI/litellm',
     description: '统一调用100+ LLM模型的SDK，简化多模型集成',
-    tags: ['LLM', 'SDK', 'API', '多模型', '开源'],
+    tags: ['LLM', 'SDK', 'API', '多模型'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -953,7 +953,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/continuedev/continue',
     description: '开源AI代码助手，支持VS Code和JetBrains',
-    tags: ['AI编程', 'IDE插件', '开源', '代码助手'],
+    tags: ['AI编程', 'IDE插件', '代码助手'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
     featured: true,
   },
@@ -963,7 +963,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/xenova/transformers.js',
     description: '在浏览器中运行Hugging Face Transformer模型',
-    tags: ['AI', '浏览器', 'NLP', 'JavaScript', 'HuggingFace'],
+    tags: ['AI', '浏览器', 'NLP', 'JavaScript'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -972,7 +972,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/vitejs/vite',
     description: '下一代前端构建工具，极速HMR',
-    tags: ['构建工具', '前端', 'ESM', '快速', '开发'],
+    tags: ['前端', 'ESM', '开发'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
     featured: true,
   },
@@ -982,7 +982,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/vercel/turborepo',
     description: 'Vercel的高性能JavaScript monorepo构建系统',
-    tags: ['Monorepo', '构建', 'JavaScript', 'Vercel', '性能'],
+    tags: ['Monorepo', 'JavaScript', 'Vercel', '性能'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -991,7 +991,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/prisma/prisma',
     description: '下一代Node.js和TypeScript ORM',
-    tags: ['ORM', 'TypeScript', '数据库', 'Node.js', '工具'],
+    tags: ['ORM', 'TypeScript', '数据库', 'Node.js'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
     featured: true,
   },
@@ -1001,7 +1001,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/colinhacks/zod',
     description: 'TypeScript优先的模式验证和类型推断库',
-    tags: ['TypeScript', '验证', '类型', '模式', '开发'],
+    tags: ['TypeScript', '验证', '类型', '模式'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1010,7 +1010,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/supabase/supabase',
     description: '开源Firebase替代方案，PostgreSQL后端即服务',
-    tags: ['后端', '开源', 'PostgreSQL', 'BaaS', '数据库'],
+    tags: ['后端', 'PostgreSQL', 'BaaS', '数据库'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
     featured: true,
   },
@@ -1020,7 +1020,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/appwrite/appwrite',
     description: '开源后端服务器，替代Firebase',
-    tags: ['后端', '开源', 'BaaS', '自托管', '开发'],
+    tags: ['后端', 'BaaS', '自托管', '开发'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1029,7 +1029,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/calcom/cal.com',
     description: '开源调度基础设施，Calendly替代品',
-    tags: ['开源', '调度', '日历', 'SaaS', '工具'],
+    tags: ['工具'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1038,7 +1038,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/plausible/analytics',
     description: '简单、隐私友好的Google Analytics替代品',
-    tags: ['分析', '隐私', '开源', '轻量', 'GDPR'],
+    tags: ['分析', '隐私', 'GDPR'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1047,7 +1047,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/n8n-io/n8n',
     description: '免费开源的工作流自动化工具，Zapier替代品',
-    tags: ['自动化', '工作流', '开源', '集成', '工具'],
+    tags: ['自动化', '工作流', '集成'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
     featured: true,
   },
@@ -1057,7 +1057,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/FlowiseAI/Flowise',
     description: '拖放式UI构建LangChain应用',
-    tags: ['LangChain', '低代码', 'AI', '可视化', '工具'],
+    tags: ['LangChain', '低代码', 'AI', '可视化'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1066,7 +1066,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/langgenius/dify',
     description: '开源LLM应用开发平台，支持工作流和RAG',
-    tags: ['LLM', '平台', '开源', 'RAG', 'AI'],
+    tags: ['LLM', 'RAG', 'AI'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
     featured: true,
   },
@@ -1076,7 +1076,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/Mintplex-Labs/anything-llm',
     description: '零门槛本地AI聊天应用，支持多模型和文档',
-    tags: ['LLM', '本地', 'RAG', '开源', '文档'],
+    tags: ['LLM', '本地', 'RAG', '文档'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1085,7 +1085,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/1Panel-dev/MaxKB',
     description: '基于LLM的知识库问答系统',
-    tags: ['知识库', 'LLM', '问答', 'RAG', '开源'],
+    tags: ['知识库', 'LLM', '问答', 'RAG'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1094,7 +1094,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/PostHog/posthog',
     description: '开源产品分析平台，替代Mixpanel/Amplitude',
-    tags: ['分析', '开源', '产品', '数据', '平台'],
+    tags: ['分析', '产品', '数据'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1103,7 +1103,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/hoppscotch/hoppscotch',
     description: '开源API开发生态系统，Postman替代品',
-    tags: ['API', '开发工具', '开源', '测试', 'HTTP'],
+    tags: ['API', '开发工具', '测试', 'HTTP'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
     featured: true,
   },
@@ -1113,7 +1113,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/sst/sst',
     description: '构建现代全栈Serverless应用框架',
-    tags: ['Serverless', '全栈', 'AWS', '框架', '开发'],
+    tags: ['Serverless', '全栈', 'AWS', '框架'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1122,7 +1122,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/Infisical/infisical',
     description: '开源密钥管理平台，团队环境变量管理',
-    tags: ['安全', '密钥', '开源', '团队', 'DevOps'],
+    tags: ['安全', '密钥', '团队', 'DevOps'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1131,7 +1131,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/novuhq/novu',
     description: '开源通知基础设施，统一多渠道消息',
-    tags: ['通知', '开源', '消息', '基础设施', '工具'],
+    tags: ['通知', '消息', '基础设施'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1140,7 +1140,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/triggerdotdev/trigger.dev',
     description: 'TypeScript任务调度平台，GitHub Actions替代品',
-    tags: ['调度', 'TypeScript', '自动化', '工作流', '开源'],
+    tags: ['TypeScript', '自动化', '工作流'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1149,7 +1149,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/pgvector/pgvector',
     description: 'PostgreSQL向量相似性搜索扩展',
-    tags: ['向量', 'PostgreSQL', 'AI', '搜索', '数据库'],
+    tags: ['向量', 'PostgreSQL', 'AI', 'AI搜索'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1158,7 +1158,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/chroma-core/chroma',
     description: 'AI原生开源向量数据库',
-    tags: ['向量数据库', 'AI', '开源', '嵌入', 'RAG'],
+    tags: ['向量数据库', 'AI', '嵌入', 'RAG'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
     featured: true,
   },
@@ -1168,7 +1168,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/qdrant/qdrant',
     description: '高性能向量相似性搜索引擎',
-    tags: ['向量搜索', 'AI', 'Rust', '高性能', '数据库'],
+    tags: ['向量搜索', 'AI', 'Rust', '高性能'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1177,7 +1177,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/weaviate/weaviate',
     description: '开源向量数据库，支持语义搜索',
-    tags: ['向量数据库', 'AI', '开源', '语义搜索', '工具'],
+    tags: ['向量数据库', 'AI', '语义搜索'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1186,7 +1186,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/milvus-io/milvus',
     description: '云原生向量数据库，亿级向量检索',
-    tags: ['向量数据库', '云原生', 'AI', '大规模', '开源'],
+    tags: ['向量数据库', '云原生', 'AI', '大规模'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1195,7 +1195,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/microsoft/playwright',
     description: '微软出品，现代Web测试和自动化框架',
-    tags: ['测试', '自动化', '微软', '浏览器', 'E2E'],
+    tags: ['测试', '自动化', '浏览器', 'E2E'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
     featured: true,
   },
@@ -1205,7 +1205,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/cypress-io/cypress',
     description: '下一代前端测试工具，实时重载',
-    tags: ['测试', '前端', 'E2E', '开发', '工具'],
+    tags: ['测试', '前端', 'E2E', '开发'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1214,7 +1214,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/vitest-dev/vitest',
     description: '由Vite驱动的极速单元测试框架',
-    tags: ['测试', 'Vite', '快速', '单元测试', '开发'],
+    tags: ['测试', 'Vite', '单元测试', '开发'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1223,7 +1223,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/storybookjs/storybook',
     description: '前端组件独立开发环境，UI文档化',
-    tags: ['组件', '文档', 'UI', '开发', '工具'],
+    tags: ['组件', '文档', 'UI', '开发'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1232,7 +1232,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/nrwl/nx',
     description: '智能、快速、可扩展的构建系统',
-    tags: ['Monorepo', '构建', '工具', '可扩展', '智能'],
+    tags: ['Monorepo'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1241,7 +1241,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/biomejs/biome',
     description: 'Web工具链，格式化、检查、打包一体化',
-    tags: ['工具链', '格式化', 'Lint', 'Rust', '快速'],
+    tags: ['Rust'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1250,7 +1250,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/rome/tools',
     description: '统一的JavaScript工具链（已并入Biome）',
-    tags: ['工具链', 'JavaScript', '已归档', '历史'],
+    tags: ['JavaScript', '已归档', '历史'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   // ==================== AI 大语言模型 ====================
@@ -1260,7 +1260,7 @@ export const extendedToolsData: AITool[] = [
     type: 'website',
     url: 'https://tongyi.aliyun.com/qianwen',
     description: '阿里巴巴开源的千亿级参数大语言模型，支持中英等多语言',
-    tags: ['大模型', 'LLM', '阿里巴巴', '开源', '中文', 'AI'],
+    tags: ['大模型', 'LLM', '阿里巴巴', 'AI'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1269,7 +1269,7 @@ export const extendedToolsData: AITool[] = [
     type: 'website',
     url: 'https://deepseek.com',
     description: '深度求索开发的通用大语言模型，编程能力突出',
-    tags: ['大模型', 'LLM', '编程', '中文', 'AI', '深度求索'],
+    tags: ['大模型', 'LLM', 'AI编程', 'AI'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1278,7 +1278,7 @@ export const extendedToolsData: AITool[] = [
     type: 'website',
     url: 'https://www.baichuan-ai.com',
     description: '王小川创立的大模型公司，专注中文场景',
-    tags: ['大模型', 'LLM', '中文', 'AI', '王小川'],
+    tags: ['大模型', 'LLM', 'AI', '王小川'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1287,7 +1287,7 @@ export const extendedToolsData: AITool[] = [
     type: 'website',
     url: 'https://www.moonshot.cn',
     description: '支持超长上下文窗口的大语言模型，Kimi Chat 开发商',
-    tags: ['大模型', 'LLM', '长上下文', '中文', 'AI', 'Kimi'],
+    tags: ['大模型', 'LLM', '长上下文', 'AI'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1296,7 +1296,7 @@ export const extendedToolsData: AITool[] = [
     type: 'website',
     url: 'https://www.01.ai',
     description: '李开复创办的开源大模型 Yi 系列',
-    tags: ['大模型', 'LLM', '开源', '李开复', 'AI'],
+    tags: ['大模型', 'LLM', '李开复', 'AI'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   // ==================== 垂直场景 AI ====================
@@ -1306,7 +1306,7 @@ export const extendedToolsData: AITool[] = [
     type: 'website',
     url: 'https://accio.work',
     description: 'AI 驱动的垂直场景工作流自动化工具',
-    tags: ['AI', '工作流', '自动化', '垂直场景', '生产力'],
+    tags: ['AI', '工作流', '自动化', '垂直场景'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1315,7 +1315,7 @@ export const extendedToolsData: AITool[] = [
     type: 'website',
     url: 'https://www.coze.cn',
     description: '字节跳动推出的 AI 应用开发平台，无需代码创建 Bot',
-    tags: ['AI', '低代码', 'Bot', '字节跳动', 'Agent'],
+    tags: ['AI', '低代码', 'Bot', '字节跳动'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1324,7 +1324,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/langgenius/dify',
     description: '开源 LLM 应用开发平台，支持工作流编排',
-    tags: ['AI', '开源', 'LLM', '工作流', '平台'],
+    tags: ['AI', 'LLM', '工作流'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1333,7 +1333,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/labring/FastGPT',
     description: '基于 LLM 的知识库问答系统，支持可视化工作流',
-    tags: ['AI', '开源', '知识库', '问答', 'RAG'],
+    tags: ['AI', '知识库', '问答', 'RAG'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1342,7 +1342,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/langchain-ai/langchain',
     description: '构建 LLM 应用的开发框架，支持多种模型集成',
-    tags: ['AI', '开源', '框架', 'LLM', 'Python'],
+    tags: ['AI', '框架', 'LLM', 'Python'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1351,7 +1351,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/run-llama/llama_index',
     description: 'LLM 数据框架，用于连接私有数据和 LLM',
-    tags: ['AI', '开源', 'RAG', '数据', 'LLM'],
+    tags: ['AI', 'RAG', '数据', 'LLM'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1360,7 +1360,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/Stability-AI/stablediffusion',
     description: '开源图像生成模型，由 Stability AI 开发',
-    tags: ['AI', '开源', '图像生成', 'Stable Diffusion', '文生图'],
+    tags: ['AI', '图像生成', 'Stable Diffusion', '文生图'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1369,7 +1369,7 @@ export const extendedToolsData: AITool[] = [
     type: 'website',
     url: 'https://www.midjourney.com',
     description: '高质量的 AI 图像生成工具，通过 Discord 使用',
-    tags: ['AI', '图像生成', 'Midjourney', '文生图', '设计'],
+    tags: ['AI', '图像生成', 'Midjourney', '文生图'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1378,7 +1378,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/comfyanonymous/ComfyUI',
     description: '基于节点流程的 Stable Diffusion 图形界面',
-    tags: ['AI', '开源', '图像生成', 'Stable Diffusion', '工作流'],
+    tags: ['AI', '图像生成', 'Stable Diffusion', '工作流'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1387,7 +1387,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/invoke-ai/InvokeAI',
     description: 'Stable Diffusion 的专业级创作工具，支持画布模式',
-    tags: ['AI', '开源', '图像生成', 'Stable Diffusion', '专业'],
+    tags: ['AI', '图像生成', 'Stable Diffusion', '专业'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1396,7 +1396,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/infiniflow/ragflow',
     description: '基于深度文档理解的 RAG 引擎，可处理复杂格式文档',
-    tags: ['AI', '开源', 'RAG', '知识库', '文档理解'],
+    tags: ['AI', 'RAG', '知识库', '文档理解'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1405,7 +1405,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/Mintplex-Labs/anything-llm',
     description: '一站式私有文档聊天解决方案，支持多种 LLM',
-    tags: ['AI', '开源', '私有化', '文档', 'RAG'],
+    tags: ['AI', '私有化', '文档', 'RAG'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1414,7 +1414,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/FlowiseAI/Flowise',
     description: '可视化 LLM 流程编排工具，低代码构建 AI 应用',
-    tags: ['AI', '开源', '低代码', '工作流', 'LangChain'],
+    tags: ['AI', '低代码', '工作流', 'LangChain'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1423,7 +1423,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/bentoml/BentoML',
     description: 'ML 模型服务化框架，快速部署 AI 模型到生产',
-    tags: ['AI', '开源', 'MLOps', '部署', '生产'],
+    tags: ['AI', 'MLOps', '部署', '生产'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1432,7 +1432,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/triton-inference-server/server',
     description: 'NVIDIA 开源的高性能推理服务框架',
-    tags: ['AI', '开源', '推理', 'GPU', 'NVIDIA'],
+    tags: ['AI', '推理', 'GPU', 'NVIDIA'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1441,7 +1441,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/janhq/jan',
     description: '开源的 ChatGPT 替代品，100% 本地运行 LLM',
-    tags: ['AI', '开源', '本地', '隐私', '聊天'],
+    tags: ['AI', '本地', '隐私', '聊天'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1450,7 +1450,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/lobehub/lobe-chat',
     description: '开源的高性能聊天机器人框架，支持多种模型',
-    tags: ['AI', '开源', '聊天', 'Bot', '现代化'],
+    tags: ['AI', '聊天', 'Bot', '现代化'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1459,7 +1459,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/open-webui/open-webui',
     description: '针对 LLM 的用户友好型 WebUI，前身为 Ollama WebUI',
-    tags: ['AI', '开源', 'WebUI', 'Ollama', '聊天'],
+    tags: ['AI', 'WebUI', 'Ollama', '聊天'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1468,7 +1468,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/1Panel-dev/MaxKB',
     description: '基于 LLM 的知识库问答系统，开箱即用',
-    tags: ['AI', '开源', '知识库', '问答', '中文'],
+    tags: ['AI', '知识库', '问答'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1477,7 +1477,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/milvus-io/milvus',
     description: '开源向量数据库，专为 AI 和机器学习设计',
-    tags: ['AI', '开源', '向量数据库', 'RAG', 'Milvus'],
+    tags: ['AI', '向量数据库', 'RAG', 'Milvus'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1486,7 +1486,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/chroma-core/chroma',
     description: '开源嵌入式向量数据库，专为 AI 应用设计',
-    tags: ['AI', '开源', '向量数据库', 'RAG', '嵌入'],
+    tags: ['AI', '向量数据库', 'RAG', '嵌入'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1495,7 +1495,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/weaviate/weaviate',
     description: '开源向量搜索引擎，支持语义搜索和 RAG',
-    tags: ['AI', '开源', '向量搜索', 'RAG', '语义搜索'],
+    tags: ['AI', '向量搜索', 'RAG', '语义搜索'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1504,7 +1504,7 @@ export const extendedToolsData: AITool[] = [
     type: 'website',
     url: 'https://www.pinecone.io',
     description: '托管式向量数据库服务，专为生产级 AI 应用设计',
-    tags: ['AI', '向量数据库', '托管', 'SaaS', 'RAG'],
+    tags: ['AI', '向量数据库', '托管', 'RAG'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1513,7 +1513,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/jina-ai/jina',
     description: '神经搜索框架，构建多模态 AI 应用',
-    tags: ['AI', '开源', '搜索', '多模态', '神经网络'],
+    tags: ['AI', 'AI搜索', '神经网络'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1522,7 +1522,7 @@ export const extendedToolsData: AITool[] = [
     type: 'website',
     url: 'https://www.voiceflow.com',
     description: '可视化对话式 AI 设计平台，支持团队协作',
-    tags: ['AI', '低代码', '对话', 'Bot', '设计'],
+    tags: ['AI', '低代码', 'AI对话', 'Bot'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1531,7 +1531,7 @@ export const extendedToolsData: AITool[] = [
     type: 'website',
     url: 'https://www.stack-ai.com',
     description: '无代码 AI 自动化平台，连接 200+ 应用',
-    tags: ['AI', '无代码', '自动化', '集成', 'SaaS'],
+    tags: ['AI', '无代码', '自动化', '集成'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1540,7 +1540,7 @@ export const extendedToolsData: AITool[] = [
     type: 'website',
     url: 'https://www.gumloop.com',
     description: 'AI 自动化工作流构建器，类似 Zapier 但 AI 驱动',
-    tags: ['AI', '自动化', '工作流', 'Zapier', 'SaaS'],
+    tags: ['AI', '自动化', '工作流', 'Zapier'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1549,7 +1549,7 @@ export const extendedToolsData: AITool[] = [
     type: 'website',
     url: 'https://www.browse.ai',
     description: 'AI 驱动的网页数据采集工具，无需代码',
-    tags: ['AI', '爬虫', '数据采集', '无代码', '自动化'],
+    tags: ['AI', '爬虫', '数据采集', '无代码'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
@@ -1558,7 +1558,7 @@ export const extendedToolsData: AITool[] = [
     type: 'github',
     url: 'https://github.com/mendableai/firecrawl',
     description: '将整个网站转换为 LLM 就绪的 Markdown 数据',
-    tags: ['AI', '开源', '爬虫', 'LLM', '数据'],
+    tags: ['AI', '爬虫', 'LLM', '数据'],
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
 ];

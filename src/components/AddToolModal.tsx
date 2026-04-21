@@ -81,19 +81,24 @@ export function AddToolModal({ isOpen, onClose, onSubmit, editingTool, onUpdate 
       icon: formData.icon.trim() || 'fa-cube',
     };
 
-    let result;
-    if (isEditing && editingTool && onUpdate) {
-      result = await onUpdate(editingTool.id, data);
-    } else {
-      result = await onSubmit(data);
-    }
+    try {
+      let result;
+      if (isEditing && editingTool && onUpdate) {
+        result = await onUpdate(editingTool.id, data);
+      } else {
+        result = await onSubmit(data);
+      }
 
-    setLoading(false);
-    if (result.success) {
-      setFormData({ name: '', type: 'ai-product', url: '', description: '', tags: '', icon: '' });
-      onClose();
-    } else {
-      setError(result.error || (isEditing ? '更新失败' : '添加失败'));
+      if (result?.success) {
+        setFormData({ name: '', type: 'ai-product', url: '', description: '', tags: '', icon: '' });
+        onClose();
+      } else {
+        setError(result?.error || (isEditing ? '更新失败' : '添加失败'));
+      }
+    } catch (err: any) {
+      setError(err?.message || '保存失败，请检查网络连接');
+    } finally {
+      setLoading(false);
     }
   };
 
