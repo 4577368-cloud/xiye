@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { AITool } from '../types';
+import { Theme } from '../hook/useTheme';
 
 interface HeroProps {
   searchQuery: string;
   onSearch: (query: string) => void;
   featuredTools?: AITool[];
+  theme: Theme;
 }
 
 const typeConfig: Record<string, { label: string; gradient: string; accent: string }> = {
@@ -49,8 +51,9 @@ function getInitials(name: string): string {
   return name.slice(0, 2).toUpperCase();
 }
 
-export const Hero: React.FC<HeroProps> = ({ searchQuery, onSearch, featuredTools }) => {
+export const Hero: React.FC<HeroProps> = ({ searchQuery, onSearch, featuredTools, theme }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const isDark = theme === 'dark';
 
   useEffect(() => {
     if (!featuredTools || featuredTools.length <= 1) return;
@@ -66,8 +69,8 @@ export const Hero: React.FC<HeroProps> = ({ searchQuery, onSearch, featuredTools
   const initials = featuredTool ? getInitials(featuredTool.name) : '';
 
   return (
-    <section className="relative min-h-[50vh] sm:min-h-[55vh] flex flex-col items-center justify-center px-4 sm:px-6 py-16 sm:py-20 overflow-hidden">
-      <div className="absolute inset-0 bg-black" />
+    <section className={`relative min-h-[50vh] sm:min-h-[55vh] flex flex-col items-center justify-center px-4 sm:px-6 py-16 sm:py-20 overflow-hidden transition-colors duration-300 ${isDark ? 'bg-black' : 'bg-gradient-to-b from-gray-100 to-white'}`}>
+      <div className={`absolute inset-0 ${isDark ? 'bg-black' : 'bg-white'}`} />
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-1/4 left-1/4 w-64 sm:w-96 h-64 sm:h-96 bg-cyan-500/20 rounded-full blur-[100px] sm:blur-[120px] animate-pulse" />
         <div className="absolute bottom-1/4 right-1/4 w-48 sm:w-80 h-48 sm:h-80 bg-purple-500/20 rounded-full blur-[80px] sm:blur-[100px] animate-pulse" style={{ animationDelay: '1s' }} />
@@ -80,12 +83,12 @@ export const Hero: React.FC<HeroProps> = ({ searchQuery, onSearch, featuredTools
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 sm:mb-6 tracking-tight">
+          <h1 className={`text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 tracking-tight ${isDark ? 'text-white' : 'text-gray-900'}`}>
             熙烨的
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500">AI</span>
             集合站
           </h1>
-          <p className="text-base sm:text-lg md:text-xl text-gray-400 mb-8 sm:mb-10 max-w-xl mx-auto leading-relaxed px-2">
+          <p className={`text-base sm:text-lg md:text-xl mb-8 sm:mb-10 max-w-xl mx-auto leading-relaxed px-2 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
             发现优质AI工具、网站、GitHub仓库与技能，一站式探索人工智能世界
           </p>
         </motion.div>
@@ -98,16 +101,16 @@ export const Hero: React.FC<HeroProps> = ({ searchQuery, onSearch, featuredTools
           style={{ maxWidth: '500px' }}
         >
           <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-xl blur-xl" />
-          <div className="relative flex items-center bg-gray-900/80 border border-gray-700/50 rounded-xl overflow-hidden backdrop-blur-sm shadow-2xl">
-            <div className="flex items-center px-3 sm:px-4 py-3 sm:py-4 border-r border-gray-700/50">
-              <i className="fa-solid fa-search text-gray-400 text-sm sm:text-base" />
+          <div className={`relative flex items-center border rounded-xl overflow-hidden backdrop-blur-sm shadow-2xl ${isDark ? 'bg-gray-900/80 border-gray-700/50' : 'bg-white/80 border-gray-200'}`}>
+            <div className={`flex items-center px-3 sm:px-4 py-3 sm:py-4 border-r ${isDark ? 'border-gray-700/50' : 'border-gray-200'}`}>
+              <i className={`fa-solid fa-search text-sm sm:text-base ${isDark ? 'text-gray-400' : 'text-gray-500'}`} />
             </div>
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => onSearch(e.target.value)}
               placeholder="搜索AI工具、标签..."
-              className="w-full px-3 sm:px-4 py-3 sm:py-4 bg-transparent text-white placeholder-gray-500 outline-none text-sm sm:text-base"
+              className={`w-full px-3 sm:px-4 py-3 sm:py-4 bg-transparent placeholder-gray-500 outline-none text-sm sm:text-base ${isDark ? 'text-white' : 'text-gray-900'}`}
             />
             <button className="px-4 sm:px-6 py-3 sm:py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-medium hover:from-cyan-400 hover:to-blue-400 transition-all text-sm">
               搜索
@@ -125,7 +128,7 @@ export const Hero: React.FC<HeroProps> = ({ searchQuery, onSearch, featuredTools
             <div className="flex items-center justify-between mb-3 sm:mb-4 px-1">
               <div className="flex items-center gap-2">
                 <i className="fa-solid fa-rocket text-cyan-400" />
-                <span className="text-xs sm:text-sm font-medium text-gray-300">热门推荐</span>
+                <span className={`text-xs sm:text-sm font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>热门推荐</span>
               </div>
               <div className="flex items-center gap-1.5">
                 {featuredTools.map((_, index) => (
@@ -133,7 +136,7 @@ export const Hero: React.FC<HeroProps> = ({ searchQuery, onSearch, featuredTools
                     key={index}
                     onClick={() => setCurrentSlide(index)}
                     className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all ${
-                      index === currentSlide ? 'bg-cyan-400 w-4 sm:w-6' : 'bg-gray-600 hover:bg-gray-500'
+                      index === currentSlide ? 'bg-cyan-400 w-4 sm:w-6' : isDark ? 'bg-gray-600 hover:bg-gray-500' : 'bg-gray-300 hover:bg-gray-400'
                     }`}
                   />
                 ))}
@@ -147,7 +150,7 @@ export const Hero: React.FC<HeroProps> = ({ searchQuery, onSearch, featuredTools
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.4 }}
-                className="bg-gray-900/50 border border-gray-700/30 rounded-xl p-4 sm:p-6 backdrop-blur-sm hover:border-gray-600/50 transition-colors"
+                className={`border rounded-xl p-4 sm:p-6 backdrop-blur-sm transition-colors ${isDark ? 'bg-gray-900/50 border-gray-700/30 hover:border-gray-600/50' : 'bg-white/50 border-gray-200 hover:border-gray-300'}`}
               >
                 {featuredTool && config && (
                   <div className="flex items-center gap-3 sm:gap-4">
@@ -166,18 +169,18 @@ export const Hero: React.FC<HeroProps> = ({ searchQuery, onSearch, featuredTools
                     </div>
                     <div className="flex-1 text-left min-w-0">
                       <div className="flex items-center gap-2 mb-1 sm:mb-2 flex-wrap">
-                        <h3 className="text-sm sm:text-lg font-semibold text-white truncate">{featuredTool.name}</h3>
+                        <h3 className={`text-sm sm:text-lg font-semibold truncate ${isDark ? 'text-white' : 'text-gray-900'}`}>{featuredTool.name}</h3>
                         <span className={`text-xs px-2 py-0.5 border rounded-sm ${config.accent} font-medium`}>
                           {config.label}
                         </span>
                       </div>
-                      <p className="text-xs sm:text-sm text-gray-400 line-clamp-2">{featuredTool.description}</p>
+                      <p className={`text-xs sm:text-sm line-clamp-2 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{featuredTool.description}</p>
                     </div>
                     <a
                       href={featuredTool.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-shrink-0 px-3 sm:px-4 py-2 bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-medium rounded-lg transition-colors flex items-center gap-1.5"
+                      className={`flex-shrink-0 px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium rounded-lg transition-colors flex items-center gap-1.5 ${isDark ? 'bg-white/10 hover:bg-white/20 text-white' : 'bg-gray-100 hover:bg-gray-200 text-gray-900'}`}
                     >
                       <span>访问</span>
                       <i className="fa-solid fa-arrow-up-right-from-square text-xs" />

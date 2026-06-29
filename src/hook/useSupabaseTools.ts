@@ -67,17 +67,22 @@ function isRlsDeniedError(error: unknown): boolean {
 }
 
 export function useSupabaseTools() {
-  const [tools, setTools] = useState<AITool[]>([]);
-  const [loading, setLoading] = useState(true);
+  // 先用本地数据初始化，避免等待网络请求
+  const baseTools = useMemo(() => 
+    [...localToolsData, ...extendedToolsData].map(tool => ({
+      ...tool,
+      tags: normalizeTags(tool.tags),
+    })),
+    []
+  );
+  
+  const [tools, setTools] = useState<AITool[]>(baseTools);
+  const [loading, setLoading] = useState(false); // 初始不加载，直接显示本地数据
   const [searchQuery, setSearchQuery] = useState('');
   const [activeFilter, setActiveFilter] = useState<FilterType>('all');
   const [activeTag, setActiveTag] = useState<string | null>(null);
 
   const fetchTools = useCallback(async () => {
-    const baseTools = [...localToolsData, ...extendedToolsData].map(tool => ({
-      ...tool,
-      tags: normalizeTags(tool.tags),
-    }));
     try {
       const { data, error } = await supabase
         .from('ai_tools')
@@ -86,7 +91,6 @@ export function useSupabaseTools() {
 
       if (error) {
         console.error('Error fetching tools:', error);
-        setTools(baseTools);
         return;
       }
 
@@ -101,17 +105,16 @@ export function useSupabaseTools() {
         featured: item.featured || false,
       }));
 
+      // 合并本地数据和数据库数据
       const allTools = [...baseTools, ...dbTools];
       setTools(allTools);
     } catch (err) {
       console.error('Failed to fetch tools:', err);
-      setTools(baseTools);
-    } finally {
-      setLoading(false);
     }
-  }, []);
+  }, [baseTools]);
 
   useEffect(() => {
+    // 后台异步加载 Supabase 数据，不阻塞初始显示
     fetchTools();
   }, [fetchTools]);
 

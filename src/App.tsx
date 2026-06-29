@@ -113,8 +113,10 @@ export default function App() {
 
   const displayTools = activeTab === 'favorites' ? favoriteTools : tools;
 
+  const isDark = theme === 'dark';
+
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100">
+    <div className={`min-h-screen transition-colors duration-300 ${isDark ? 'bg-zinc-950 text-zinc-100' : 'bg-gray-50 text-gray-900'}`}>
       <Header
         onAddClick={handleAddClick}
         activeTab={activeTab}
@@ -137,6 +139,7 @@ export default function App() {
             searchQuery={searchQuery}
             onSearch={setSearchQuery}
             featuredTools={featuredTools}
+            theme={theme}
           />
         )}
 
@@ -146,6 +149,7 @@ export default function App() {
               tools={allTools}
               onCategoryClick={(type) => setActiveFilter(type)}
               activeFilter={activeFilter === 'all' ? 'all' : (activeFilter as ToolType)}
+              theme={theme}
             />
             <section className="max-w-7xl mx-auto px-6 py-12">
               <FilterBar
@@ -156,7 +160,7 @@ export default function App() {
                 onTagChange={setActiveTag}
               />
               {loading ? (
-                <div className="flex items-center justify-center py-24">
+                <div className={`flex items-center justify-center py-24 ${isDark ? 'text-zinc-400' : 'text-gray-500'}`}>
                   <div className="w-8 h-8 border-2 border-cyan-500 border-t-transparent rounded-full animate-spin" />
                 </div>
               ) : (
@@ -165,6 +169,7 @@ export default function App() {
                   isFavorite={isFavorite}
                   onToggleFavorite={handleToggleFavorite}
                   onToolClick={handleToolClick}
+                  theme={theme}
                 />
               )}
             </section>
@@ -174,16 +179,16 @@ export default function App() {
         {activeTab === 'favorites' && (
           <section className="max-w-7xl mx-auto px-6 py-12">
             <div className="mb-8">
-              <h2 className="text-2xl font-semibold text-white mb-2">我的收藏</h2>
-              <p className="text-zinc-400">共收藏 {favoriteTools.length} 个工具</p>
+              <h2 className={`text-2xl font-semibold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>我的收藏</h2>
+              <p className={isDark ? 'text-zinc-400' : 'text-gray-600'}>共收藏 {favoriteTools.length} 个工具</p>
             </div>
             {favoriteTools.length === 0 ? (
-              <div className="flex flex-col items-center justify-center py-24 text-center">
-                <div className="w-16 h-16 mb-6 bg-zinc-800 flex items-center justify-center">
-                  <i className="fa-regular fa-star text-zinc-500 text-2xl" />
+              <div className={`flex flex-col items-center justify-center py-24 text-center ${isDark ? 'text-zinc-400' : 'text-gray-500'}`}>
+                <div className={`w-16 h-16 mb-6 flex items-center justify-center ${isDark ? 'bg-zinc-800' : 'bg-gray-200'}`}>
+                  <i className={`fa-regular fa-star text-2xl ${isDark ? 'text-zinc-500' : 'text-gray-400'}`} />
                 </div>
-                <h3 className="text-lg font-medium text-zinc-300 mb-2">暂无收藏</h3>
-                <p className="text-sm text-zinc-500">点击工具卡片上的星标按钮添加收藏</p>
+                <h3 className={`text-lg font-medium mb-2 ${isDark ? 'text-zinc-300' : 'text-gray-700'}`}>暂无收藏</h3>
+                <p className={`text-sm ${isDark ? 'text-zinc-500' : 'text-gray-400'}`}>点击工具卡片上的星标按钮添加收藏</p>
               </div>
             ) : (
               <ToolGrid
@@ -191,6 +196,7 @@ export default function App() {
                 isFavorite={isFavorite}
                 onToggleFavorite={handleToggleFavorite}
                 onToolClick={handleToolClick}
+                theme={theme}
               />
             )}
           </section>
