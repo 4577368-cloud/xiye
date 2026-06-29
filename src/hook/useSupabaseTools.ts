@@ -45,14 +45,14 @@ const TAG_RULES: Array<{ tag: (typeof STANDARD_TAGS)[number]; keywords: string[]
 const TAG_ORDER = new Map(STANDARD_TAGS.map((tag, index) => [tag, index]));
 
 const useCaseTagMap: Record<string, string[]> = {
-  'programming': ['AI编程', '编程', '代码', '开发', 'IDE', 'SDK'],
-  'graphic': ['AI绘画', '图像生成', '设计', '照片', '抠图'],
-  'video': ['AI视频', '视频生成', '剪辑', '动画'],
-  'music': ['AI音乐', '音乐', '音频', '语音'],
-  'writing': ['写作', '文案', '翻译', '文档'],
-  'search': ['AI搜索', '搜索', '学术', '问答'],
-  'chat': ['AI对话', 'LLM', '聊天', '对话'],
-  'office': ['PPT', '思维导图', '表格', '办公'],
+  'programming': ['编程', '代码', '开发', 'IDE', 'SDK', 'API', 'TypeScript', 'JavaScript', 'Python', '代码审查', '代码生成', '代码助手'],
+  'graphic': ['绘画', '图像生成', '设计', '照片', '抠图', '图片', '插画', '海报', 'Logo', '修图', 'AI绘画'],
+  'video': ['视频', '剪辑', '动画', '视频生成', 'AI视频', '视频编辑'],
+  'music': ['音乐', '音频', '语音', 'AI音乐', '声音', '配音'],
+  'writing': ['写作', '文案', '翻译', '文档', '文章', '博客', '文案', '内容创作'],
+  'search': ['搜索', '学术', '问答', 'AI搜索', '知识库'],
+  'chat': ['对话', 'LLM', '聊天', 'AI对话', 'AI助手', '聊天机器人'],
+  'office': ['PPT', '思维导图', '表格', '办公', '演示', '幻灯片', '文档处理'],
 };
 
 function normalizeTags(tags: string[] = []): string[] {
@@ -275,10 +275,9 @@ export function useSupabaseTools() {
     } else if (categoryOrder.includes(activeFilter as ToolType)) {
       matchesFilter = tool.type === activeFilter;
     } else if (Object.keys(useCaseTagMap).includes(activeFilter)) {
-      const useCaseTags = useCaseTagMap[activeFilter];
-      matchesFilter = tool.tags.some(tag => 
-        useCaseTags.some(useCaseTag => tag.includes(useCaseTag))
-      );
+      const useCaseKeywords = useCaseTagMap[activeFilter];
+      const allText = `${tool.name} ${tool.description} ${tool.tags.join(' ')}`.toLowerCase();
+      matchesFilter = useCaseKeywords.some(keyword => allText.includes(keyword.toLowerCase()));
     }
     
     const matchesSearch = searchQuery === '' ||

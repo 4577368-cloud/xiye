@@ -20,15 +20,15 @@ const categoryConfig: Record<string, { label: string; icon: string; gradient: st
 
 const categoryOrder: ToolType[] = ['ai-product', 'website', 'app', 'github', 'skill'];
 
-const useCaseConfig: Record<string, { label: string; icon: string; gradient: string; color: string; tags: string[] }> = {
-  'programming': { label: '编程开发', icon: 'fa-code', gradient: 'from-blue-500/20 to-indigo-500/20', color: 'text-blue-400', tags: ['AI编程', '编程', '代码', '开发', 'IDE', 'SDK'] },
-  'graphic': { label: '图形处理', icon: 'fa-image', gradient: 'from-purple-500/20 to-pink-500/20', color: 'text-purple-400', tags: ['AI绘画', '图像生成', '设计', '照片', '抠图'] },
-  'video': { label: '视频制作', icon: 'fa-video', gradient: 'from-red-500/20 to-orange-500/20', color: 'text-red-400', tags: ['AI视频', '视频生成', '剪辑', '动画'] },
-  'music': { label: '音乐音频', icon: 'fa-music', gradient: 'from-green-500/20 to-emerald-500/20', color: 'text-green-400', tags: ['AI音乐', '音乐', '音频', '语音'] },
-  'writing': { label: '写作创作', icon: 'fa-pen-to-square', gradient: 'from-amber-500/20 to-yellow-500/20', color: 'text-amber-400', tags: ['写作', '文案', '翻译', '文档'] },
-  'search': { label: 'AI搜索', icon: 'fa-search', gradient: 'from-cyan-500/20 to-teal-500/20', color: 'text-cyan-400', tags: ['AI搜索', '搜索', '学术', '问答'] },
-  'chat': { label: 'AI对话', icon: 'fa-message', gradient: 'from-indigo-500/20 to-violet-500/20', color: 'text-indigo-400', tags: ['AI对话', 'LLM', '聊天', '对话'] },
-  'office': { label: '办公效率', icon: 'fa-file', gradient: 'from-rose-500/20 to-pink-500/20', color: 'text-rose-400', tags: ['PPT', '思维导图', '表格', '办公'] },
+const useCaseConfig: Record<string, { label: string; icon: string; gradient: string; color: string; keywords: string[] }> = {
+  'programming': { label: '编程开发', icon: 'fa-code', gradient: 'from-blue-500/20 to-indigo-500/20', color: 'text-blue-400', keywords: ['编程', '代码', '开发', 'IDE', 'SDK', 'API', 'TypeScript', 'JavaScript', 'Python', '代码审查', '代码生成', '代码助手'] },
+  'graphic': { label: '图形处理', icon: 'fa-image', gradient: 'from-purple-500/20 to-pink-500/20', color: 'text-purple-400', keywords: ['绘画', '图像生成', '设计', '照片', '抠图', '图片', '插画', '海报', 'Logo', '修图', 'AI绘画'] },
+  'video': { label: '视频制作', icon: 'fa-video', gradient: 'from-red-500/20 to-orange-500/20', color: 'text-red-400', keywords: ['视频', '剪辑', '动画', '视频生成', 'AI视频', '视频编辑'] },
+  'music': { label: '音乐音频', icon: 'fa-music', gradient: 'from-green-500/20 to-emerald-500/20', color: 'text-green-400', keywords: ['音乐', '音频', '语音', 'AI音乐', '声音', '配音'] },
+  'writing': { label: '写作创作', icon: 'fa-pen-to-square', gradient: 'from-amber-500/20 to-yellow-500/20', color: 'text-amber-400', keywords: ['写作', '文案', '翻译', '文档', '文章', '博客', '文案', '内容创作'] },
+  'search': { label: 'AI搜索', icon: 'fa-search', gradient: 'from-cyan-500/20 to-teal-500/20', color: 'text-cyan-400', keywords: ['搜索', '学术', '问答', 'AI搜索', '知识库'] },
+  'chat': { label: 'AI对话', icon: 'fa-message', gradient: 'from-indigo-500/20 to-violet-500/20', color: 'text-indigo-400', keywords: ['对话', 'LLM', '聊天', 'AI对话', 'AI助手', '聊天机器人'] },
+  'office': { label: '办公效率', icon: 'fa-file', gradient: 'from-rose-500/20 to-pink-500/20', color: 'text-rose-400', keywords: ['PPT', '思维导图', '表格', '办公', '演示', '幻灯片', '文档处理'] },
 };
 
 const useCaseOrder = ['programming', 'graphic', 'video', 'music', 'writing', 'search', 'chat', 'office'];
@@ -44,9 +44,10 @@ export function CategorySection({ tools, onCategoryClick, activeFilter, theme }:
 
   const useCaseCounts = useCaseOrder.reduce((acc, key) => {
     const config = useCaseConfig[key];
-    acc[key] = tools.filter(tool => 
-      config.tags.some(tag => tool.tags.includes(tag))
-    ).length;
+    acc[key] = tools.filter(tool => {
+      const allText = `${tool.name} ${tool.description} ${tool.tags.join(' ')}`.toLowerCase();
+      return config.keywords.some(keyword => allText.includes(keyword.toLowerCase()));
+    }).length;
     return acc;
   }, {} as Record<string, number>);
 
