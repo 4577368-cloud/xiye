@@ -56,7 +56,7 @@ function normalizeTags(tags: string[] = []): string[] {
   if (normalized.size === 0) normalized.add('开发工具');
 
   return Array.from(normalized)
-    .sort((a, b) => (TAG_ORDER.get(a) ?? 999) - (TAG_ORDER.get(b) ?? 999))
+    .sort((a, b) => (TAG_ORDER.get(a as (typeof STANDARD_TAGS)[number]) ?? 999) - (TAG_ORDER.get(b as (typeof STANDARD_TAGS)[number]) ?? 999))
     .slice(0, 3);
 }
 
@@ -269,7 +269,7 @@ export function useSupabaseTools() {
     tools.forEach(tool => {
       tool.tags.forEach(tag => tagSet.add(tag));
     });
-    return Array.from(tagSet).sort((a, b) => (TAG_ORDER.get(a) ?? 999) - (TAG_ORDER.get(b) ?? 999));
+    return Array.from(tagSet).sort((a, b) => (TAG_ORDER.get(a as (typeof STANDARD_TAGS)[number]) ?? 999) - (TAG_ORDER.get(b as (typeof STANDARD_TAGS)[number]) ?? 999));
   }, [tools]);
 
   // 根据当前筛选条件计算可用的标签
@@ -278,7 +278,7 @@ export function useSupabaseTools() {
     filteredTools.forEach(tool => {
       tool.tags.forEach(tag => tagSet.add(tag));
     });
-    return Array.from(tagSet).sort((a, b) => (TAG_ORDER.get(a) ?? 999) - (TAG_ORDER.get(b) ?? 999));
+    return Array.from(tagSet).sort((a, b) => (TAG_ORDER.get(a as (typeof STANDARD_TAGS)[number]) ?? 999) - (TAG_ORDER.get(b as (typeof STANDARD_TAGS)[number]) ?? 999));
   }, [filteredTools]);
 
   return {
