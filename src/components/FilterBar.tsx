@@ -12,6 +12,7 @@ interface FilterBarProps {
   theme: Theme;
   searchQuery?: string;
   resultCount?: number;
+  onClearSearch?: () => void;
 }
 
 export function FilterBar({ 
@@ -22,7 +23,8 @@ export function FilterBar({
   onTagChange,
   theme,
   searchQuery,
-  resultCount = 0
+  resultCount = 0,
+  onClearSearch
 }: FilterBarProps) {
   const isDark = theme === 'dark';
   const hasSearchQuery = searchQuery && searchQuery.trim().length > 0;
@@ -46,7 +48,7 @@ export function FilterBar({
               找到 <span className="font-bold">{resultCount}</span> 个结果
             </span>
             <button
-              onClick={() => onFilterChange('all')}
+              onClick={onClearSearch}
               className={`ml-auto text-xs px-2 py-1 rounded transition-colors ${
                 isDark
                   ? 'bg-white/10 hover:bg-white/20'

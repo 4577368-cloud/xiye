@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useRef, useCallback, useEffect } from 'react';
 import { useSupabaseTools } from './hook/useSupabaseTools';
 import { useFavorites } from './hook/useFavorites';
 import { useCommands } from './hook/useCommands';
@@ -70,6 +70,34 @@ export default function App() {
   const [editingCommand, setEditingCommand] = useState<Command | null>(null);
   const [editingPrompt, setEditingPrompt] = useState<Prompt | null>(null);
   const [activeTab, setActiveTab] = useState<'tools' | 'commands' | 'favorites' | 'prompts' | 'rankings'>('tools');
+  const toolsSectionRef = useRef<HTMLDivElement>(null);
+
+  // 滚动到工具列表区域
+  const scrollToTools = useCallback(() => {
+    if (toolsSectionRef.current) {
+      const headerOffset = 64;
+      const elementPosition = toolsSectionRef.current.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  }, []);
+
+  const handleClearSearch = useCallback(() => {
+    setSearchQuery('');
+    setActiveFilter('all');
+    setActiveTag(null);
+  }, [setSearchQuery, setActiveFilter, setActiveTag]);
+
+  // 监听搜索词变化，滚动到结果
+  useEffect(() => {
+    if (searchQuery && searchQuery.trim().length > 0) {
+      // 延迟一下等UI更新
+      setTimeout(scrollToTools, 100);
+    }
+  }, [searchQuery, scrollToTools]);
 
   const handleToolClick = (tool: AITool) => {
     setSelectedTool(tool);
@@ -151,7 +179,7 @@ export default function App() {
               activeFilter={activeFilter === 'all' ? 'all' : (activeFilter as ToolType)}
               theme={theme}
             />
-            <section className="max-w-7xl mx-auto px-6 py-12">
+            <section ref={toolsSectionRef} className="max-w-7xl mx-auto px-6 py-12">
               <FilterBar
                 activeFilter={activeFilter}
                 onFilterChange={setActiveFilter}
@@ -161,6 +189,7 @@ export default function App() {
                 theme={theme}
                 searchQuery={searchQuery}
                 resultCount={displayTools.length}
+                onClearSearch={handleClearSearch}
               />
               {loading ? (
                 <div className={`flex items-center justify-center py-24 ${isDark ? 'text-zinc-400' : 'text-gray-500'}`}>
