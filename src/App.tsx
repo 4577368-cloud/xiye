@@ -158,6 +158,9 @@ export default function App() {
                 availableTags={availableTags}
                 activeTag={activeTag}
                 onTagChange={setActiveTag}
+                theme={theme}
+                searchQuery={searchQuery}
+                resultCount={displayTools.length}
               />
               {loading ? (
                 <div className={`flex items-center justify-center py-24 ${isDark ? 'text-zinc-400' : 'text-gray-500'}`}>
