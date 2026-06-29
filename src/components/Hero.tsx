@@ -16,6 +16,39 @@ const typeConfig: Record<string, { label: string; gradient: string; accent: stri
   'skill': { label: '技能', gradient: 'from-amber-500/20 to-orange-500/20', accent: 'text-amber-400 border-amber-400/30' },
 };
 
+const brandColors = [
+  'from-red-500 to-orange-500',
+  'from-orange-500 to-amber-500',
+  'from-amber-500 to-yellow-500',
+  'from-yellow-500 to-green-500',
+  'from-green-500 to-emerald-500',
+  'from-emerald-500 to-teal-500',
+  'from-teal-500 to-cyan-500',
+  'from-cyan-500 to-blue-500',
+  'from-blue-500 to-indigo-500',
+  'from-indigo-500 to-violet-500',
+  'from-violet-500 to-purple-500',
+  'from-purple-500 to-fuchsia-500',
+  'from-fuchsia-500 to-pink-500',
+  'from-pink-500 to-rose-500',
+];
+
+function getBrandColor(name: string): string {
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) {
+    hash = name.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  return brandColors[Math.abs(hash) % brandColors.length];
+}
+
+function getInitials(name: string): string {
+  const parts = name.split(/[\s\-_.]+/);
+  if (parts.length >= 2) {
+    return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+  }
+  return name.slice(0, 2).toUpperCase();
+}
+
 export const Hero: React.FC<HeroProps> = ({ searchQuery, onSearch, featuredTools }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -29,28 +62,30 @@ export const Hero: React.FC<HeroProps> = ({ searchQuery, onSearch, featuredTools
 
   const featuredTool = featuredTools?.[currentSlide];
   const config = featuredTool ? typeConfig[featuredTool.type] || typeConfig['ai-product'] : null;
+  const brandColor = featuredTool ? getBrandColor(featuredTool.name) : '';
+  const initials = featuredTool ? getInitials(featuredTool.name) : '';
 
   return (
-    <section className="relative min-h-[55vh] flex flex-col items-center justify-center px-6 py-20 overflow-hidden">
+    <section className="relative min-h-[50vh] sm:min-h-[55vh] flex flex-col items-center justify-center px-4 sm:px-6 py-16 sm:py-20 overflow-hidden">
       <div className="absolute inset-0 bg-black" />
       <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/20 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-[150px]" />
+        <div className="absolute top-1/4 left-1/4 w-64 sm:w-96 h-64 sm:h-96 bg-cyan-500/20 rounded-full blur-[100px] sm:blur-[120px] animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-48 sm:w-80 h-48 sm:h-80 bg-purple-500/20 rounded-full blur-[80px] sm:blur-[100px] animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] bg-blue-500/5 rounded-full blur-[120px] sm:blur-[150px]" />
       </div>
 
-      <div className="relative z-10 text-center max-w-4xl mx-auto w-full">
+      <div className="relative z-10 text-center w-full max-w-4xl mx-auto px-2">
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 sm:mb-6 tracking-tight">
             熙烨的
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500">AI</span>
             集合站
           </h1>
-          <p className="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-gray-400 mb-8 sm:mb-10 max-w-xl mx-auto leading-relaxed px-2">
             发现优质AI工具、网站、GitHub仓库与技能，一站式探索人工智能世界
           </p>
         </motion.div>
@@ -59,21 +94,22 @@ export const Hero: React.FC<HeroProps> = ({ searchQuery, onSearch, featuredTools
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="relative max-w-xl mx-auto mb-12"
+          className="relative mx-auto mb-8 sm:mb-12"
+          style={{ maxWidth: '500px' }}
         >
           <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-xl blur-xl" />
           <div className="relative flex items-center bg-gray-900/80 border border-gray-700/50 rounded-xl overflow-hidden backdrop-blur-sm shadow-2xl">
-            <div className="flex items-center px-4 py-4 border-r border-gray-700/50">
-              <i className="fa-solid fa-search text-gray-400" />
+            <div className="flex items-center px-3 sm:px-4 py-3 sm:py-4 border-r border-gray-700/50">
+              <i className="fa-solid fa-search text-gray-400 text-sm sm:text-base" />
             </div>
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => onSearch(e.target.value)}
-              placeholder="搜索AI工具、标签、命令..."
-              className="w-full px-4 py-4 bg-transparent text-white placeholder-gray-500 outline-none text-base"
+              placeholder="搜索AI工具、标签..."
+              className="w-full px-3 sm:px-4 py-3 sm:py-4 bg-transparent text-white placeholder-gray-500 outline-none text-sm sm:text-base"
             />
-            <button className="px-6 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-medium hover:from-cyan-400 hover:to-blue-400 transition-all">
+            <button className="px-4 sm:px-6 py-3 sm:py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-medium hover:from-cyan-400 hover:to-blue-400 transition-all text-sm">
               搜索
             </button>
           </div>
@@ -84,20 +120,20 @@ export const Hero: React.FC<HeroProps> = ({ searchQuery, onSearch, featuredTools
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="w-full max-w-2xl mx-auto"
+            className="w-full max-w-md sm:max-w-2xl mx-auto"
           >
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center justify-between mb-3 sm:mb-4 px-1">
               <div className="flex items-center gap-2">
                 <i className="fa-solid fa-rocket text-cyan-400" />
-                <span className="text-sm font-medium text-gray-300">热门推荐</span>
+                <span className="text-xs sm:text-sm font-medium text-gray-300">热门推荐</span>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5">
                 {featuredTools.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentSlide(index)}
-                    className={`w-2 h-2 rounded-full transition-all ${
-                      index === currentSlide ? 'bg-cyan-400 w-6' : 'bg-gray-600 hover:bg-gray-500'
+                    className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all ${
+                      index === currentSlide ? 'bg-cyan-400 w-4 sm:w-6' : 'bg-gray-600 hover:bg-gray-500'
                     }`}
                   />
                 ))}
@@ -111,35 +147,37 @@ export const Hero: React.FC<HeroProps> = ({ searchQuery, onSearch, featuredTools
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.4 }}
-                className="bg-gray-900/50 border border-gray-700/30 rounded-xl p-6 backdrop-blur-sm hover:border-gray-600/50 transition-colors"
+                className="bg-gray-900/50 border border-gray-700/30 rounded-xl p-4 sm:p-6 backdrop-blur-sm hover:border-gray-600/50 transition-colors"
               >
                 {featuredTool && config && (
-                  <div className="flex items-center gap-4">
-                    <div className={`flex-shrink-0 w-14 h-14 flex items-center justify-center bg-gradient-to-br ${config.gradient} rounded-lg overflow-hidden border border-white/10 shadow-lg`}>
+                  <div className="flex items-center gap-3 sm:gap-4">
+                    <div className={`flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center bg-gradient-to-br ${brandColor} rounded-lg overflow-hidden shadow-lg`}>
                       {featuredTool.icon?.startsWith('http') ? (
                         <img
                           src={featuredTool.icon}
                           alt={featuredTool.name}
-                          className="w-7 h-7 object-contain"
+                          className="w-6 h-6 sm:w-7 sm:h-7 object-contain"
                         />
+                      ) : featuredTool.icon && featuredTool.icon.startsWith('fa-') ? (
+                        <i className={`fa-solid ${featuredTool.icon} text-base sm:text-lg text-white/90`} />
                       ) : (
-                        <i className={`fa-solid ${featuredTool.icon || 'fa-cube'} text-lg text-white/90`} />
+                        <span className="text-sm sm:text-lg font-bold text-white">{initials}</span>
                       )}
                     </div>
-                    <div className="flex-1 text-left">
-                      <div className="flex items-center gap-2 mb-2">
-                        <h3 className="text-lg font-semibold text-white">{featuredTool.name}</h3>
+                    <div className="flex-1 text-left min-w-0">
+                      <div className="flex items-center gap-2 mb-1 sm:mb-2 flex-wrap">
+                        <h3 className="text-sm sm:text-lg font-semibold text-white truncate">{featuredTool.name}</h3>
                         <span className={`text-xs px-2 py-0.5 border rounded-sm ${config.accent} font-medium`}>
                           {config.label}
                         </span>
                       </div>
-                      <p className="text-sm text-gray-400 line-clamp-2">{featuredTool.description}</p>
+                      <p className="text-xs sm:text-sm text-gray-400 line-clamp-2">{featuredTool.description}</p>
                     </div>
                     <a
                       href={featuredTool.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-shrink-0 px-4 py-2 bg-white/10 hover:bg-white/20 text-white text-sm font-medium rounded-lg transition-colors flex items-center gap-2"
+                      className="flex-shrink-0 px-3 sm:px-4 py-2 bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-medium rounded-lg transition-colors flex items-center gap-1.5"
                     >
                       <span>访问</span>
                       <i className="fa-solid fa-arrow-up-right-from-square text-xs" />
@@ -150,17 +188,6 @@ export const Hero: React.FC<HeroProps> = ({ searchQuery, onSearch, featuredTools
             </AnimatePresence>
           </motion.div>
         )}
-      </div>
-
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-        <span className="text-xs text-gray-500">向下滚动探索更多</span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          className="w-5 h-8 border-2 border-gray-500 rounded-full flex items-start justify-center p-1.5"
-        >
-          <div className="w-1 h-2 bg-gray-400 rounded-full" />
-        </motion.div>
       </div>
     </section>
   );

@@ -26,17 +26,17 @@ export function CategorySection({ tools, onCategoryClick, activeFilter }: Catego
   const totalTools = tools.length;
 
   return (
-    <section className="max-w-7xl mx-auto px-6 py-12">
+    <section className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
       <motion.div
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="text-center mb-12"
+        className="text-center mb-8 sm:mb-12"
       >
-        <h2 className="text-3xl font-bold text-white mb-4">工具分类</h2>
-        <p className="text-gray-400">共收录 {totalTools} 个工具，按类别浏览</p>
+        <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3 sm:mb-4">工具分类</h2>
+        <p className="text-sm sm:text-base text-gray-400">共收录 {totalTools} 个工具，按类别浏览</p>
       </motion.div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-6">
         {categoryOrder.map((type, index) => {
           const config = categoryConfig[type];
           const isActive = activeFilter === type;
@@ -48,20 +48,20 @@ export function CategorySection({ tools, onCategoryClick, activeFilter }: Catego
               onClick={() => onCategoryClick(type)}
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ scale: 1.05, y: -4 }}
+              transition={{ delay: index * 0.08 }}
+              whileHover={{ scale: 1.03, y: -3 }}
               whileTap={{ scale: 0.98 }}
-              className={`group relative p-6 rounded-xl border transition-all duration-300 text-left ${
+              className={`group relative p-4 sm:p-6 rounded-xl border transition-all duration-300 text-left ${
                 isActive
                   ? 'bg-white/10 border-white/30 shadow-lg shadow-white/5'
                   : 'bg-white/[0.03] border-white/[0.08] hover:border-white/[0.15] hover:bg-white/[0.06]'
               }`}
             >
-              <div className={`w-12 h-12 flex items-center justify-center bg-gradient-to-br ${config.gradient} rounded-lg mb-4 group-hover:scale-110 transition-transform`}>
-                <i className={`fa-solid ${config.icon} text-lg ${config.color}`} />
+              <div className={`w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-gradient-to-br ${config.gradient} rounded-lg mb-3 sm:mb-4 group-hover:scale-110 transition-transform`}>
+                <i className={`fa-solid ${config.icon} text-sm sm:text-lg ${config.color}`} />
               </div>
-              <h3 className="text-lg font-semibold text-white mb-1">{config.label}</h3>
-              <p className="text-sm text-gray-400">{count} 个工具</p>
+              <h3 className="text-sm sm:text-lg font-semibold text-white mb-1">{config.label}</h3>
+              <p className="text-xs sm:text-sm text-gray-400">{count} 个工具</p>
               <div className={`absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity ${
                 isActive ? '' : 'bg-gradient-to-br from-white/5 to-transparent'
               }`} />
@@ -73,12 +73,12 @@ export function CategorySection({ tools, onCategoryClick, activeFilter }: Catego
       <motion.div
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.5 }}
-        className="mt-12 text-center"
+        transition={{ delay: 0.4 }}
+        className="mt-8 sm:mt-12 text-center"
       >
         <button
           onClick={() => onCategoryClick('all')}
-          className={`inline-flex items-center gap-2 px-6 py-3 rounded-lg border transition-all ${
+          className={`inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-lg border transition-all text-sm sm:text-base ${
             activeFilter === 'all'
               ? 'bg-white/10 border-white/30 text-white'
               : 'bg-transparent border-white/10 text-gray-400 hover:text-white hover:border-white/30'

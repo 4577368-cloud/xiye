@@ -16,9 +16,44 @@ const typeConfig: Record<string, { label: string; gradient: string; accent: stri
   'skill': { label: '技能', gradient: 'from-amber-500/20 to-orange-500/20', accent: 'text-amber-400 border-amber-400/30' },
 };
 
+const brandColors = [
+  'from-red-500 to-orange-500',
+  'from-orange-500 to-amber-500',
+  'from-amber-500 to-yellow-500',
+  'from-yellow-500 to-green-500',
+  'from-green-500 to-emerald-500',
+  'from-emerald-500 to-teal-500',
+  'from-teal-500 to-cyan-500',
+  'from-cyan-500 to-blue-500',
+  'from-blue-500 to-indigo-500',
+  'from-indigo-500 to-violet-500',
+  'from-violet-500 to-purple-500',
+  'from-purple-500 to-fuchsia-500',
+  'from-fuchsia-500 to-pink-500',
+  'from-pink-500 to-rose-500',
+];
+
+function getBrandColor(name: string): string {
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) {
+    hash = name.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  return brandColors[Math.abs(hash) % brandColors.length];
+}
+
+function getInitials(name: string): string {
+  const parts = name.split(/[\s\-_.]+/);
+  if (parts.length >= 2) {
+    return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+  }
+  return name.slice(0, 2).toUpperCase();
+}
+
 export function ToolCard({ tool, isFavorite, onToggleFavorite, onClick }: ToolCardProps) {
   const config = typeConfig[tool.type] || typeConfig['ai-product'];
   const isExternalIcon = tool.icon?.startsWith('http') || false;
+  const brandColor = getBrandColor(tool.name);
+  const initials = getInitials(tool.name);
 
   const handleFavoriteClick = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -30,48 +65,48 @@ export function ToolCard({ tool, isFavorite, onToggleFavorite, onClick }: ToolCa
       onClick={onClick}
       whileHover={{ y: -6, scale: 1.01 }}
       transition={{ duration: 0.25, ease: [0.23, 1, 0.32, 1] }}
-      className="group block p-6 bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] hover:border-white/[0.15] hover:bg-white/[0.06] transition-all duration-300 cursor-pointer relative"
+      className="group block p-5 sm:p-6 bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] hover:border-white/[0.15] hover:bg-white/[0.06] transition-all duration-300 cursor-pointer relative rounded-xl"
     >
-      <div className="flex items-start gap-4">
-        <div className={`flex-shrink-0 w-12 h-12 flex items-center justify-center bg-gradient-to-br ${config.gradient} rounded-sm overflow-hidden border border-white/10`}>
+      <div className="flex items-start gap-3 sm:gap-4">
+        <div className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-gradient-to-br ${brandColor} rounded-lg overflow-hidden shadow-lg`}>
           {isExternalIcon ? (
             <img
               src={tool.icon}
               alt={tool.name}
-              className="w-6 h-6 object-contain"
+              className="w-5 h-5 sm:w-6 sm:h-6 object-contain"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
                 target.style.display = 'none';
                 const parent = target.parentElement;
                 if (parent) {
-                  const fallback = document.createElement('i');
-                  fallback.className = 'fa-solid fa-cube text-lg text-white/80';
-                  parent.appendChild(fallback);
+                  parent.innerHTML = `<span class="text-sm sm:text-lg font-bold text-white">${initials}</span>`;
                 }
               }}
             />
+          ) : tool.icon && tool.icon.startsWith('fa-') ? (
+            <i className={`fa-solid ${tool.icon} text-sm sm:text-lg text-white/90`} />
           ) : (
-            <i className={`fa-solid ${tool.icon || 'fa-cube'} text-lg text-white/80`} />
+            <span className="text-sm sm:text-lg font-bold text-white">{initials}</span>
           )}
         </div>
 
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2 mb-2">
-            <h3 className="text-[15px] font-semibold text-white/90 tracking-tight truncate">
+          <div className="flex items-center gap-2 mb-2 flex-wrap">
+            <h3 className="text-sm sm:text-[15px] font-semibold text-white/90 tracking-tight truncate">
               {tool.name}
             </h3>
-            <span className={`text-[11px] px-2 py-0.5 border rounded-sm ${config.accent} font-medium tracking-wide whitespace-nowrap flex-shrink-0`}>
+            <span className={`text-xs sm:text-[11px] px-2 py-0.5 border rounded-sm ${config.accent} font-medium tracking-wide whitespace-nowrap flex-shrink-0`}>
               {config.label}
             </span>
           </div>
 
-          <p className="text-[13px] text-white/50 leading-relaxed line-clamp-2 mb-4">
+          <p className="text-xs sm:text-[13px] text-white/50 leading-relaxed line-clamp-2 mb-3 sm:mb-4">
             {tool.description}
           </p>
 
           <div className="flex items-center gap-1.5 overflow-hidden whitespace-nowrap">
             {tool.tags.slice(0, 3).map((tag) => (
-              <span key={tag} className="text-[11px] text-white/40 px-2 py-1 bg-white/[0.04] rounded-sm truncate flex-shrink-0 max-w-[70px]">
+              <span key={tag} className="text-xs sm:text-[11px] text-white/40 px-2 py-1 bg-white/[0.04] rounded-sm truncate flex-shrink-0 max-w-[60px] sm:max-w-[70px]">
                 {tag}
               </span>
             ))}
