@@ -289,6 +289,7 @@ export default function App() {
         isOpen={isLoginModalOpen}
         onClose={() => setIsLoginModalOpen(false)}
         onLogin={login}
+        theme={theme}
       />
       <ToolDetailModal
         tool={selectedTool}
