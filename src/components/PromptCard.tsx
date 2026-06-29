@@ -14,6 +14,11 @@ const categoryColors: Record<PromptCategory, string> = {
   coding: 'text-cyan-400 border-cyan-400/30 bg-cyan-400/10',
   design: 'text-violet-400 border-violet-400/30 bg-violet-400/10',
   analysis: 'text-emerald-400 border-emerald-400/30 bg-emerald-400/10',
+  translation: 'text-blue-400 border-blue-400/30 bg-blue-400/10',
+  framework: 'text-amber-400 border-amber-400/30 bg-amber-400/10',
+  education: 'text-green-400 border-green-400/30 bg-green-400/10',
+  roleplay: 'text-purple-400 border-purple-400/30 bg-purple-400/10',
+  creative: 'text-orange-400 border-orange-400/30 bg-orange-400/10',
   other: 'text-zinc-400 border-zinc-400/30 bg-zinc-400/10',
 };
 
@@ -22,6 +27,11 @@ const categoryLabels: Record<PromptCategory, string> = {
   coding: '编程',
   design: '设计',
   analysis: '分析',
+  translation: '翻译',
+  framework: '思维框架',
+  education: '教育学习',
+  roleplay: '角色扮演',
+  creative: '创意生成',
   other: '其他',
 };
 

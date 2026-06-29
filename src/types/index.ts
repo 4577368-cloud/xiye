@@ -19,7 +19,7 @@ export interface FilterOption {
   icon: string;
 }
 
-export type PromptCategory = 'writing' | 'coding' | 'design' | 'analysis' | 'other';
+export type PromptCategory = 'writing' | 'coding' | 'design' | 'analysis' | 'other' | 'translation' | 'framework' | 'education' | 'roleplay' | 'creative';
 
 export interface Prompt {
   id: string;

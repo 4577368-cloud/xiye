@@ -251,7 +251,7 @@ export type Database = {
     Enums: {
       command_category: "mac" | "ollama" | "docker" | "git" | "npm" | "general"
       tool_type: "ai-product" | "website" | "app" | "github" | "skill"
-      prompt_category: "writing" | "coding" | "design" | "analysis" | "other"
+      prompt_category: "writing" | "coding" | "design" | "analysis" | "other" | "translation" | "framework" | "education" | "roleplay" | "creative"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -369,7 +369,7 @@ export const Constants = {
     Enums: {
       command_category: ["mac", "ollama", "docker", "git", "npm", "general"],
       tool_type: ["ai-product", "website", "app", "github", "skill"],
-      prompt_category: ["writing", "coding", "design", "analysis", "other"],
+      prompt_category: ["writing", "coding", "design", "analysis", "other", "translation", "framework", "education", "roleplay", "creative"],
     },
   },
 } as const

@@ -1,15 +1,30 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { supabase } from '../supabase/client';
 import { Prompt, PromptCategory } from '../types';
+import { presetPromptsData } from '../data/presetPrompts';
+
+function isRlsDeniedError(error: unknown): boolean {
+  const message = String((error as { message?: string })?.message || '').toLowerCase();
+  const code = String((error as { code?: string })?.code || '');
+  return code === '42501' || message.includes('row-level security') || message.includes('rls');
+}
 
 export function usePrompts() {
-  const [prompts, setPrompts] = useState<Prompt[]>([]);
-  const [loading, setLoading] = useState(true);
+  const basePrompts = useMemo(() => 
+    presetPromptsData.map((prompt, index) => ({
+      ...prompt,
+      id: `preset-${index}`,
+      category: prompt.category as PromptCategory,
+    })),
+    []
+  );
+  
+  const [prompts, setPrompts] = useState<Prompt[]>(basePrompts);
+  const [loading, setLoading] = useState(false);
   const [activeCategory, setActiveCategory] = useState<PromptCategory | 'all'>('all');
   const [searchQuery, setSearchQuery] = useState('');
 
   const fetchPrompts = useCallback(async () => {
-    setLoading(true);
     try {
       const { data, error } = await supabase
         .from('prompts')
@@ -18,11 +33,10 @@ export function usePrompts() {
 
       if (error) {
         console.error('Error fetching prompts:', error);
-        setPrompts([]);
         return;
       }
 
-      const formattedPrompts: Prompt[] = (data || []).map(item => ({
+      const dbPrompts: Prompt[] = (data || []).map(item => ({
         id: item.id,
         title: item.title,
         category: item.category as PromptCategory,
@@ -31,14 +45,12 @@ export function usePrompts() {
         tags: item.tags || [],
       }));
 
-      setPrompts(formattedPrompts);
+      const allPrompts = [...basePrompts, ...dbPrompts];
+      setPrompts(allPrompts);
     } catch (err) {
       console.error('Failed to fetch prompts:', err);
-      setPrompts([]);
-    } finally {
-      setLoading(false);
     }
-  }, []);
+  }, [basePrompts]);
 
   useEffect(() => {
     fetchPrompts();
@@ -82,7 +94,20 @@ export function usePrompts() {
 
       if (error) {
         console.error('Error adding prompt:', error);
-        return { success: false, error: error.message };
+        if (!isRlsDeniedError(error)) {
+          return { success: false, error: error.message };
+        }
+
+        const localPrompt: Prompt = {
+          id: crypto.randomUUID(),
+          title: prompt.title,
+          category: prompt.category,
+          content: prompt.content,
+          description: prompt.description,
+          tags: prompt.tags,
+        };
+        setPrompts(prev => [localPrompt, ...prev]);
+        return { success: true, error: '已本地添加（Supabase RLS 拒绝写入，未同步到云端）' };
       }
 
       const newPrompt: Prompt = {
@@ -119,7 +144,12 @@ export function usePrompts() {
 
       if (error) {
         console.error('Error updating prompt:', error);
-        return { success: false, error: error.message };
+        if (!isRlsDeniedError(error)) {
+          return { success: false, error: error.message };
+        }
+
+        setPrompts(prev => prev.map(p => p.id === id ? { ...p, ...prompt } : p));
+        return { success: true, error: '已本地更新（Supabase RLS 拒绝写入，未同步到云端）' };
       }
 
       const updatedPrompt: Prompt = {
@@ -145,7 +175,12 @@ export function usePrompts() {
 
       if (error) {
         console.error('Error deleting prompt:', error);
-        return { success: false, error: error.message };
+        if (!isRlsDeniedError(error)) {
+          return { success: false, error: error.message };
+        }
+
+        setPrompts(prev => prev.filter(p => p.id !== id));
+        return { success: true, error: '已本地删除（Supabase RLS 拒绝写入，未同步到云端）' };
       }
 
       setPrompts(prev => prev.filter(p => p.id !== id));

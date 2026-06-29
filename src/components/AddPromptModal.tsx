@@ -15,6 +15,11 @@ const categoryOptions: { value: PromptCategory; label: string }[] = [
   { value: 'coding', label: '编程' },
   { value: 'design', label: '设计' },
   { value: 'analysis', label: '分析' },
+  { value: 'translation', label: '翻译' },
+  { value: 'framework', label: '思维框架' },
+  { value: 'education', label: '教育学习' },
+  { value: 'roleplay', label: '角色扮演' },
+  { value: 'creative', label: '创意生成' },
   { value: 'other', label: '其他' },
 ];
 

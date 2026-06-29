@@ -9,6 +9,11 @@ const categories: { value: PromptCategory | 'all'; label: string; icon: string }
   { value: 'coding', label: '编程', icon: 'fa-code' },
   { value: 'design', label: '设计', icon: 'fa-palette' },
   { value: 'analysis', label: '分析', icon: 'fa-chart-line' },
+  { value: 'translation', label: '翻译', icon: 'fa-language' },
+  { value: 'framework', label: '思维框架', icon: 'fa-sitemap' },
+  { value: 'education', label: '教育学习', icon: 'fa-graduation-cap' },
+  { value: 'roleplay', label: '角色扮演', icon: 'fa-mask' },
+  { value: 'creative', label: '创意生成', icon: 'fa-lightbulb' },
   { value: 'other', label: '其他', icon: 'fa-shapes' },
 ];
 

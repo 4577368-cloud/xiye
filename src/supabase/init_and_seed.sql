@@ -1,8 +1,6 @@
 -- One-time init and seed for Supabase
 -- Project: xorfzgubieexgmqhiwiu
 
-CREATE EXTENSION IF NOT EXISTS "pgcrypto";
-
 DO $$
 BEGIN
   IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'tool_type') THEN
@@ -14,6 +12,13 @@ DO $$
 BEGIN
   IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'command_category') THEN
     CREATE TYPE command_category AS ENUM ('mac', 'ollama', 'docker', 'git', 'npm', 'general');
+  END IF;
+END $$;
+
+DO $$
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'prompt_category') THEN
+    CREATE TYPE prompt_category AS ENUM ('writing', 'coding', 'design', 'analysis', 'other', 'translation', 'framework', 'education', 'roleplay', 'creative');
   END IF;
 END $$;
 
@@ -48,9 +53,20 @@ CREATE TABLE IF NOT EXISTS public.commands (
   created_at TIMESTAMP DEFAULT NOW()
 );
 
+CREATE TABLE IF NOT EXISTS public.prompts (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  title TEXT NOT NULL,
+  category prompt_category NOT NULL,
+  description TEXT NOT NULL,
+  content TEXT NOT NULL,
+  tags TEXT[] DEFAULT '{}',
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
 ALTER TABLE public.ai_tools ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.favorites ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.commands ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.prompts ENABLE ROW LEVEL SECURITY;
 
 DO $$
 BEGIN
@@ -89,16 +105,28 @@ BEGIN
   IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE schemaname = 'public' AND tablename = 'commands' AND policyname = '认证用户可添加命令') THEN
     CREATE POLICY "认证用户可添加命令" ON public.commands FOR INSERT WITH CHECK (auth.uid() IS NOT NULL);
   END IF;
+
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE schemaname = 'public' AND tablename = 'prompts' AND policyname = '所有人可查看提示词') THEN
+    CREATE POLICY "所有人可查看提示词" ON public.prompts FOR SELECT USING (true);
+  END IF;
+
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE schemaname = 'public' AND tablename = 'prompts' AND policyname = '认证用户可添加提示词') THEN
+    CREATE POLICY "认证用户可添加提示词" ON public.prompts FOR INSERT WITH CHECK (auth.uid() IS NOT NULL);
+  END IF;
+
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE schemaname = 'public' AND tablename = 'prompts' AND policyname = '认证用户可更新提示词') THEN
+    CREATE POLICY "认证用户可更新提示词" ON public.prompts FOR UPDATE USING (auth.uid() IS NOT NULL);
+  END IF;
+
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE schemaname = 'public' AND tablename = 'prompts' AND policyname = '认证用户可删除提示词') THEN
+    CREATE POLICY "认证用户可删除提示词" ON public.prompts FOR DELETE USING (auth.uid() IS NOT NULL);
+  END IF;
 END $$;
 
 CREATE INDEX IF NOT EXISTS idx_ai_tools_type ON public.ai_tools(type);
 CREATE INDEX IF NOT EXISTS idx_ai_tools_featured ON public.ai_tools(featured);
 CREATE INDEX IF NOT EXISTS idx_commands_category ON public.commands(category);
-
--- Optional reset for repeated seeding
-TRUNCATE TABLE public.favorites;
-TRUNCATE TABLE public.ai_tools;
-TRUNCATE TABLE public.commands;
+CREATE INDEX IF NOT EXISTS idx_prompts_category ON public.prompts(category);
 
 INSERT INTO public.ai_tools (name, type, url, description, tags, icon, featured) VALUES
 ('ChatGPT', 'ai-product', 'https://chat.openai.com', 'OpenAI开发的对话式AI助手，支持自然语言交互和多种任务处理', ARRAY['对话', '写作', '编程', '通用'], 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/openai/openai-original.svg', true),
