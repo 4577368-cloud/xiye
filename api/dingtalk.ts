@@ -7,34 +7,46 @@ const DINGTALK_AES_KEY = process.env.DINGTALK_AES_KEY || '';
 const DINGTALK_CLIENT_ID = process.env.DINGTALK_CLIENT_ID || '';
 const DINGTALK_CLIENT_SECRET = process.env.DINGTALK_CLIENT_SECRET || '';
 
-function decryptAES(encrypt: string, aesKey: string): string {
-  const key = CryptoJS.enc.Base64.parse(aesKey);
-  const iv = key.clone().words.slice(0, 4);
+function decryptMsg(encrypt: string): string {
+  const aesKey = CryptoJS.enc.Base64.parse(DINGTALK_AES_KEY + '=');
+  const iv = aesKey.clone().words.slice(0, 4);
   const ivHex = CryptoJS.lib.WordArray.create(iv);
   
-  const decryptResult = CryptoJS.AES.decrypt(encrypt, key, {
+  const decryptResult = CryptoJS.AES.decrypt(encrypt, aesKey, {
     iv: ivHex,
     mode: CryptoJS.mode.CBC,
     padding: CryptoJS.pad.Pkcs7
   });
   
   const decrypted = decryptResult.toString(CryptoJS.enc.Utf8);
-  const xmlMatch = decrypted.match(/<content>(.*?)<\/content>/);
-  const textMatch = decrypted.match(/<Text>(.*?)<\/Text>/);
-  
-  if (xmlMatch) {
-    return xmlMatch[1];
-  } else if (textMatch) {
-    return textMatch[1];
-  }
   return decrypted;
 }
 
-function verifySignature(token: string, timestamp: string, nonce: string, encrypt: string): boolean {
+function encryptMsg(text: string): string {
+  const aesKey = CryptoJS.enc.Base64.parse(DINGTALK_AES_KEY + '=');
+  const iv = aesKey.clone().words.slice(0, 4);
+  const ivHex = CryptoJS.lib.WordArray.create(iv);
+  
+  const srcs = CryptoJS.enc.Utf8.parse(text);
+  const encrypted = CryptoJS.AES.encrypt(srcs, aesKey, {
+    iv: ivHex,
+    mode: CryptoJS.mode.CBC,
+    padding: CryptoJS.pad.Pkcs7
+  });
+  
+  return encrypted.toString();
+}
+
+function computeSignature(token: string, timestamp: string, nonce: string, encrypt: string): string {
   const arr = [token, timestamp, nonce, encrypt].sort();
   const str = arr.join('');
   const hash = CryptoJS.SHA1(str);
-  return hash.toString() === encrypt;
+  return hash.toString();
+}
+
+function verifySignature(token: string, timestamp: string, nonce: string, encrypt: string, msgSignature: string): boolean {
+  const computed = computeSignature(token, timestamp, nonce, encrypt);
+  return computed === msgSignature;
 }
 
 async function getAccessToken(): Promise<string> {
@@ -55,9 +67,9 @@ async function getAccessToken(): Promise<string> {
   }
 }
 
-async function sendMessageToDingtalk(chatId: string, text: string): Promise<void> {
+async function sendMessage(chatId: string, text: string): Promise<void> {
   const accessToken = await getAccessToken();
-  const url = `https://api.dingtalk.com/v1.0/robot/groupMessages/send?access_token=${accessToken}`;
+  const url = 'https://api.dingtalk.com/v1.0/robot/groupMessages/send';
   
   const payload = {
     chatId: chatId,
@@ -69,7 +81,10 @@ async function sendMessageToDingtalk(chatId: string, text: string): Promise<void
   
   try {
     await axios.post(url, payload, {
-      headers: { 'Content-Type': 'application/json' }
+      headers: { 
+        'Content-Type': 'application/json',
+        'x-acs-dingtalk-access-token': accessToken
+      }
     });
   } catch (error) {
     console.error('发送消息失败:', error);
@@ -78,51 +93,61 @@ async function sendMessageToDingtalk(chatId: string, text: string): Promise<void
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
+  res.setHeader('Content-Type', 'application/json');
+  
   if (req.method === 'GET') {
     const { msg_signature, timestamp, nonce, encrypt } = req.query;
     
-    if (!msg_signature || !timestamp || !nonce || !encrypt) {
-      return res.status(200).json({
-        encrypt: encrypt || '',
-        msg_signature: msg_signature || '',
-        timestamp: timestamp || '',
-        nonce: nonce || ''
-      });
+    if (!encrypt) {
+      return res.status(200).send('');
     }
     
     const isVerified = verifySignature(
       DINGTALK_TOKEN,
       String(timestamp),
       String(nonce),
-      String(encrypt)
+      String(encrypt),
+      String(msg_signature)
     );
     
     if (!isVerified) {
-      return res.status(200).json({
-        encrypt: encrypt || '',
-        msg_signature: msg_signature || '',
-        timestamp: timestamp || '',
-        nonce: nonce || ''
-      });
+      console.error('签名验证失败');
+      return res.status(200).send('');
     }
     
-    const decrypted = decryptAES(String(encrypt), DINGTALK_AES_KEY);
-    return res.status(200).json({
-      encrypt: decrypted,
-      msg_signature,
-      timestamp,
-      nonce
-    });
+    try {
+      const decrypted = decryptMsg(String(encrypt));
+      const xmlMatch = decrypted.match(/<content>(.*?)<\/content>/);
+      const challenge = xmlMatch ? xmlMatch[1] : '';
+      
+      const encryptedReply = encryptMsg(challenge);
+      const replySignature = computeSignature(
+        DINGTALK_TOKEN,
+        String(timestamp),
+        String(nonce),
+        encryptedReply
+      );
+      
+      return res.status(200).json({
+        encrypt: encryptedReply,
+        msg_signature: replySignature,
+        timestamp: timestamp,
+        nonce: nonce
+      });
+    } catch (error) {
+      console.error('解密失败:', error);
+      return res.status(200).send('');
+    }
   } else if (req.method === 'POST') {
     const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
     const { msg_signature, timestamp, nonce, encrypt } = body;
     
-    if (!msg_signature || !timestamp || !nonce || !encrypt) {
+    if (!encrypt || !msg_signature) {
       return res.status(200).json({
-        encrypt: encrypt || '',
-        msg_signature: msg_signature || '',
-        timestamp: timestamp || '',
-        nonce: nonce || ''
+        encrypt: '',
+        msg_signature: '',
+        timestamp: '',
+        nonce: ''
       });
     }
     
@@ -130,43 +155,56 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       DINGTALK_TOKEN,
       String(timestamp),
       String(nonce),
-      String(encrypt)
+      String(encrypt),
+      String(msg_signature)
     );
     
     if (!isVerified) {
+      console.error('签名验证失败');
       return res.status(200).json({
-        encrypt: encrypt || '',
-        msg_signature: msg_signature || '',
-        timestamp: timestamp || '',
-        nonce: nonce || ''
+        encrypt: '',
+        msg_signature: '',
+        timestamp: '',
+        nonce: ''
       });
     }
     
     try {
-      const decrypted = decryptAES(String(encrypt), DINGTALK_AES_KEY);
+      const decrypted = decryptMsg(String(encrypt));
       console.log('收到钉钉消息:', decrypted);
       
-      const messageData = JSON.parse(decrypted);
-      const { text, chatId, senderId } = messageData;
-      
-      if (text && chatId) {
-        const replyText = `收到消息: ${text.content}\n发送者: ${senderId}\n时间: ${new Date().toLocaleString()}`;
-        await sendMessageToDingtalk(chatId, replyText);
+      const jsonMatch = decrypted.match(/\{[\s\S]*\}/);
+      if (jsonMatch) {
+        const messageData = JSON.parse(jsonMatch[0]);
+        const { text, chatId, senderId, senderStaffId, sessionWebhook } = messageData;
+        
+        if (text && chatId && DINGTALK_CLIENT_ID && DINGTALK_CLIENT_SECRET) {
+          const replyText = `收到消息: ${text.content || ''}\n发送者: ${senderStaffId || senderId}\n时间: ${new Date().toLocaleString()}`;
+          await sendMessage(chatId, replyText);
+        }
       }
       
+      const encryptedReply = encryptMsg('success');
+      const replySignature = computeSignature(
+        DINGTALK_TOKEN,
+        String(timestamp),
+        String(nonce),
+        encryptedReply
+      );
+      
       return res.status(200).json({
-        encrypt: '',
-        msg_signature: msg_signature || '',
-        timestamp: timestamp || '',
-        nonce: nonce || ''
+        encrypt: encryptedReply,
+        msg_signature: replySignature,
+        timestamp: timestamp,
+        nonce: nonce
       });
     } catch (error) {
       console.error('处理消息失败:', error);
       return res.status(200).json({
         encrypt: '',
-        msg_signature: msg_signature || '',
-        timestamp: timestamp || '',
-        nonce: nonce || ''
+        msg_signature: '',
+        timestamp: '',
+        nonce: ''
       });
     }
   } else {
