@@ -100,21 +100,21 @@ export const Hero: React.FC<HeroProps> = ({ searchQuery, onSearch, featuredTools
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="relative mx-auto mb-8 sm:mb-12"
-          style={{ maxWidth: '500px' }}
+          style={{ maxWidth: '480px' }}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-xl blur-xl" />
-          <div className={`relative flex items-center border rounded-xl overflow-hidden backdrop-blur-sm shadow-2xl ${isDark ? 'bg-gray-900/80 border-gray-700/50' : 'bg-white/80 border-gray-200'}`}>
-            <div className={`flex items-center px-3 sm:px-4 py-3 sm:py-4 border-r ${isDark ? 'border-gray-700/50' : 'border-gray-200'}`}>
-              <i className={`fa-solid fa-search text-sm sm:text-base ${isDark ? 'text-gray-400' : 'text-gray-500'}`} />
+          <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-lg blur-lg" />
+          <div className={`relative flex items-center border rounded-lg overflow-hidden backdrop-blur-sm shadow-lg ${isDark ? 'bg-gray-900/80 border-gray-700/50' : 'bg-white/80 border-gray-200'}`}>
+            <div className={`flex items-center px-3 py-2.5 border-r ${isDark ? 'border-gray-700/50' : 'border-gray-200'}`}>
+              <i className={`fa-solid fa-search text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`} />
             </div>
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => onSearch(e.target.value)}
               placeholder="搜索AI工具、标签..."
-              className={`w-full px-3 sm:px-4 py-3 sm:py-4 bg-transparent placeholder-gray-500 outline-none text-sm sm:text-base ${isDark ? 'text-white' : 'text-gray-900'}`}
+              className={`w-full px-3 py-2.5 bg-transparent placeholder-gray-500 outline-none text-sm ${isDark ? 'text-white' : 'text-gray-900'}`}
             />
-            <button className="px-4 sm:px-6 py-3 sm:py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-medium hover:from-cyan-400 hover:to-blue-400 transition-all text-sm">
+            <button className="px-4 py-2.5 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-medium hover:from-cyan-400 hover:to-blue-400 transition-all text-sm rounded-none">
               搜索
             </button>
           </div>
