@@ -9,6 +9,8 @@ interface HeaderProps {
   username?: string | null;
   onLoginClick?: () => void;
   onLogout?: () => void;
+  theme?: 'light' | 'dark';
+  onThemeChange?: () => void;
 }
 
 export function Header({
@@ -20,6 +22,8 @@ export function Header({
   username,
   onLoginClick,
   onLogout,
+  theme = 'dark',
+  onThemeChange,
 }: HeaderProps) {
   const getAddButtonLabel = () => {
     if (addButtonLabel) return addButtonLabel;
@@ -91,6 +95,14 @@ export function Header({
           >
             <i className="fa-solid fa-plus text-xs" />
             {getAddButtonLabel()}
+          </button>
+
+          <button
+            onClick={onThemeChange}
+            className="p-2 border border-white/10 hover:border-white/30 hover:bg-white/5 transition-colors"
+            title={theme === 'dark' ? '切换到亮色模式' : '切换到暗色模式'}
+          >
+            <i className={`fa-solid ${theme === 'dark' ? 'fa-sun' : 'fa-moon'} text-white/70`} />
           </button>
 
           {isLoggedIn ? (

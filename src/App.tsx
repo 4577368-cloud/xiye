@@ -4,6 +4,7 @@ import { useFavorites } from './hook/useFavorites';
 import { useCommands } from './hook/useCommands';
 import { usePrompts } from './hook/usePrompts';
 import { useAuth } from './hook/useAuth';
+import { useTheme } from './hook/useTheme';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { FilterBar } from './components/FilterBar';
@@ -16,7 +17,9 @@ import { LoginModal } from './components/LoginModal';
 import { ToolDetailModal } from './components/ToolDetailModal';
 import { CommandsSection } from './components/CommandsSection';
 import { PromptsSection } from './components/PromptsSection';
+import { CategorySection } from './components/CategorySection';
 import { AITool } from './types';
+import { ToolType } from './types';
 import { Command } from './types/commands';
 import { Prompt } from './types';
 
@@ -24,6 +27,7 @@ export default function App() {
   const {
     tools,
     allTools,
+    featuredTools,
     loading,
     searchQuery,
     activeFilter,
@@ -39,6 +43,7 @@ export default function App() {
 
   const { isLoggedIn, username, login, logout } = useAuth();
   const { isFavorite, toggleFavorite, favorites } = useFavorites(isLoggedIn);
+  const { theme, toggleTheme } = useTheme();
 
   const {
     commands,
@@ -123,37 +128,47 @@ export default function App() {
         username={username}
         onLoginClick={() => setIsLoginModalOpen(true)}
         onLogout={logout}
+        theme={theme}
+        onThemeChange={toggleTheme}
       />
       <main>
         {activeTab !== 'commands' && (
           <Hero
             searchQuery={searchQuery}
             onSearch={setSearchQuery}
+            featuredTools={featuredTools}
           />
         )}
 
         {activeTab === 'tools' && (
-          <section className="max-w-7xl mx-auto px-6 py-12">
-            <FilterBar
-              activeFilter={activeFilter}
-              onFilterChange={setActiveFilter}
-              availableTags={availableTags}
-              activeTag={activeTag}
-              onTagChange={setActiveTag}
+          <>
+            <CategorySection
+              tools={allTools}
+              onCategoryClick={(type) => setActiveFilter(type)}
+              activeFilter={activeFilter === 'all' ? 'all' : (activeFilter as ToolType)}
             />
-            {loading ? (
-              <div className="flex items-center justify-center py-24">
-                <div className="w-8 h-8 border-2 border-cyan-500 border-t-transparent rounded-full animate-spin" />
-              </div>
-            ) : (
-              <ToolGrid
-                tools={displayTools}
-                isFavorite={isFavorite}
-                onToggleFavorite={handleToggleFavorite}
-                onToolClick={handleToolClick}
+            <section className="max-w-7xl mx-auto px-6 py-12">
+              <FilterBar
+                activeFilter={activeFilter}
+                onFilterChange={setActiveFilter}
+                availableTags={availableTags}
+                activeTag={activeTag}
+                onTagChange={setActiveTag}
               />
-            )}
-          </section>
+              {loading ? (
+                <div className="flex items-center justify-center py-24">
+                  <div className="w-8 h-8 border-2 border-cyan-500 border-t-transparent rounded-full animate-spin" />
+                </div>
+              ) : (
+                <ToolGrid
+                  tools={displayTools}
+                  isFavorite={isFavorite}
+                  onToggleFavorite={handleToggleFavorite}
+                  onToolClick={handleToolClick}
+                />
+              )}
+            </section>
+          </>
         )}
 
         {activeTab === 'favorites' && (
