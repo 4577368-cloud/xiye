@@ -18,8 +18,8 @@ import { ToolDetailModal } from './components/ToolDetailModal';
 import { CommandsSection } from './components/CommandsSection';
 import { PromptsSection } from './components/PromptsSection';
 import { CategorySection } from './components/CategorySection';
-import { AITool } from './types';
-import { ToolType } from './types';
+import { RankingPage } from './components/RankingPage';
+import { AITool, ToolType, FilterType } from './types';
 import { Command } from './types/commands';
 import { Prompt } from './types';
 
@@ -69,7 +69,7 @@ export default function App() {
   const [editingTool, setEditingTool] = useState<AITool | null>(null);
   const [editingCommand, setEditingCommand] = useState<Command | null>(null);
   const [editingPrompt, setEditingPrompt] = useState<Prompt | null>(null);
-  const [activeTab, setActiveTab] = useState<'tools' | 'commands' | 'favorites' | 'prompts'>('tools');
+  const [activeTab, setActiveTab] = useState<'tools' | 'commands' | 'favorites' | 'prompts' | 'rankings'>('tools');
 
   const handleToolClick = (tool: AITool) => {
     setSelectedTool(tool);
@@ -134,7 +134,7 @@ export default function App() {
         onThemeChange={toggleTheme}
       />
       <main>
-        {activeTab !== 'commands' && (
+        {activeTab !== 'commands' && activeTab !== 'rankings' && (
           <Hero
             searchQuery={searchQuery}
             onSearch={setSearchQuery}
@@ -147,7 +147,7 @@ export default function App() {
           <>
             <CategorySection
               tools={allTools}
-              onCategoryClick={(type) => setActiveFilter(type)}
+              onCategoryClick={(type) => setActiveFilter(type as FilterType)}
               activeFilter={activeFilter === 'all' ? 'all' : (activeFilter as ToolType)}
               theme={theme}
             />
@@ -216,6 +216,10 @@ export default function App() {
               onEdit={handleEditPrompt}
             />
           </div>
+        )}
+
+        {activeTab === 'rankings' && (
+          <RankingPage theme={theme} />
         )}
       </main>
       <Footer />

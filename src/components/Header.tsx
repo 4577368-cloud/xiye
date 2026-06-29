@@ -3,8 +3,8 @@ import { useState } from 'react';
 
 interface HeaderProps {
   onAddClick?: () => void;
-  activeTab?: 'tools' | 'commands' | 'favorites' | 'prompts';
-  onTabChange?: (tab: 'tools' | 'commands' | 'favorites' | 'prompts') => void;
+  activeTab?: 'tools' | 'commands' | 'favorites' | 'prompts' | 'rankings';
+  onTabChange?: (tab: 'tools' | 'commands' | 'favorites' | 'prompts' | 'rankings') => void;
   addButtonLabel?: string;
   isLoggedIn?: boolean;
   username?: string | null;
@@ -16,6 +16,7 @@ interface HeaderProps {
 
 const navItems = [
   { id: 'tools', label: '工具', icon: 'fa-wrench' },
+  { id: 'rankings', label: '榜单', icon: 'fa-chart-line' },
   { id: 'commands', label: '命令', icon: 'fa-terminal' },
   { id: 'prompts', label: '提示词', icon: 'fa-lightbulb' },
   { id: 'favorites', label: '收藏', icon: 'fa-star' },
@@ -40,11 +41,12 @@ export function Header({
     switch (activeTab) {
       case 'commands': return '添加命令';
       case 'prompts': return '添加提示词';
+      case 'rankings': return '添加工具';
       default: return '添加工具';
     }
   };
 
-  const handleTabChange = (tab: 'tools' | 'commands' | 'favorites' | 'prompts') => {
+  const handleTabChange = (tab: 'tools' | 'commands' | 'favorites' | 'prompts' | 'rankings') => {
     onTabChange?.(tab);
     setIsMobileMenuOpen(false);
   };

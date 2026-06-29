@@ -55,15 +55,17 @@ export const Hero: React.FC<HeroProps> = ({ searchQuery, onSearch, featuredTools
   const [currentSlide, setCurrentSlide] = useState(0);
   const isDark = theme === 'dark';
 
-  useEffect(() => {
-    if (!featuredTools || featuredTools.length <= 1) return;
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % featuredTools.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [featuredTools]);
+  const limitedFeaturedTools = featuredTools?.slice(0, 6) || [];
 
-  const featuredTool = featuredTools?.[currentSlide];
+  useEffect(() => {
+    if (!limitedFeaturedTools || limitedFeaturedTools.length <= 1) return;
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % limitedFeaturedTools.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [limitedFeaturedTools]);
+
+  const featuredTool = limitedFeaturedTools?.[currentSlide];
   const config = featuredTool ? typeConfig[featuredTool.type] || typeConfig['ai-product'] : null;
   const brandColor = featuredTool ? getBrandColor(featuredTool.name) : '';
   const initials = featuredTool ? getInitials(featuredTool.name) : '';
@@ -118,12 +120,12 @@ export const Hero: React.FC<HeroProps> = ({ searchQuery, onSearch, featuredTools
           </div>
         </motion.div>
 
-        {featuredTools && featuredTools.length > 0 && (
+        {limitedFeaturedTools && limitedFeaturedTools.length > 0 && (
           <motion.div
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="w-full max-w-md sm:max-w-2xl mx-auto"
+            className="w-full max-w-md sm:max-w-lg mx-auto"
           >
             <div className="flex items-center justify-between mb-3 sm:mb-4 px-1">
               <div className="flex items-center gap-2">
@@ -131,7 +133,7 @@ export const Hero: React.FC<HeroProps> = ({ searchQuery, onSearch, featuredTools
                 <span className={`text-xs sm:text-sm font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>热门推荐</span>
               </div>
               <div className="flex items-center gap-1.5">
-                {featuredTools.map((_, index) => (
+                {limitedFeaturedTools.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentSlide(index)}
@@ -146,30 +148,30 @@ export const Hero: React.FC<HeroProps> = ({ searchQuery, onSearch, featuredTools
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentSlide}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.4 }}
-                className={`border rounded-xl p-4 sm:p-6 backdrop-blur-sm transition-colors ${isDark ? 'bg-gray-900/50 border-gray-700/30 hover:border-gray-600/50' : 'bg-white/50 border-gray-200 hover:border-gray-300'}`}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.3 }}
+                className={`border rounded-xl p-4 sm:p-5 backdrop-blur-sm transition-colors cursor-pointer hover:shadow-lg ${isDark ? 'bg-gray-900/60 border-gray-700/30 hover:border-gray-600/50' : 'bg-white/60 border-gray-200 hover:border-cyan-300'}`}
               >
                 {featuredTool && config && (
-                  <div className="flex items-center gap-3 sm:gap-4">
-                    <div className={`flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center bg-gradient-to-br ${brandColor} rounded-lg overflow-hidden shadow-lg`}>
+                  <div className="flex items-center gap-3">
+                    <div className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-gradient-to-br ${brandColor} rounded-lg overflow-hidden shadow-md`}>
                       {featuredTool.icon?.startsWith('http') ? (
                         <img
                           src={featuredTool.icon}
                           alt={featuredTool.name}
-                          className="w-6 h-6 sm:w-7 sm:h-7 object-contain"
+                          className="w-5 h-5 sm:w-6 sm:h-6 object-contain"
                         />
                       ) : featuredTool.icon && featuredTool.icon.startsWith('fa-') ? (
-                        <i className={`fa-solid ${featuredTool.icon} text-base sm:text-lg text-white/90`} />
+                        <i className={`fa-solid ${featuredTool.icon} text-base text-white/90`} />
                       ) : (
-                        <span className="text-sm sm:text-lg font-bold text-white">{initials}</span>
+                        <span className="text-sm font-bold text-white">{initials}</span>
                       )}
                     </div>
                     <div className="flex-1 text-left min-w-0">
-                      <div className="flex items-center gap-2 mb-1 sm:mb-2 flex-wrap">
-                        <h3 className={`text-sm sm:text-lg font-semibold truncate ${isDark ? 'text-white' : 'text-gray-900'}`}>{featuredTool.name}</h3>
+                      <div className="flex items-center gap-2 mb-1 flex-wrap">
+                        <h3 className={`text-sm sm:text-base font-semibold truncate ${isDark ? 'text-white' : 'text-gray-900'}`}>{featuredTool.name}</h3>
                         <span className={`text-xs px-2 py-0.5 border rounded-sm ${config.accent} font-medium`}>
                           {config.label}
                         </span>
@@ -180,10 +182,10 @@ export const Hero: React.FC<HeroProps> = ({ searchQuery, onSearch, featuredTools
                       href={featuredTool.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`flex-shrink-0 px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium rounded-lg transition-colors flex items-center gap-1.5 ${isDark ? 'bg-white/10 hover:bg-white/20 text-white' : 'bg-gray-100 hover:bg-gray-200 text-gray-900'}`}
+                      className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full transition-colors"
+                      style={{ background: 'linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%)' }}
                     >
-                      <span>访问</span>
-                      <i className="fa-solid fa-arrow-up-right-from-square text-xs" />
+                      <i className="fa-solid fa-arrow-up-right-from-square text-white text-xs" />
                     </a>
                   </div>
                 )}
