@@ -1,6 +1,9 @@
 {
   "name": "xi-ye-ai-hub",
   "version": "1.0.0",
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "dev": "vite --host 127.0.0.1 --port 3266 --open",
     "build": "tsc && vite build",

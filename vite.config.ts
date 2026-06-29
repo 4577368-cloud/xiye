@@ -7,7 +7,8 @@ export default defineConfig({
   root: path.resolve(__dirname, 'src'),
   build: {
     outDir: path.resolve(__dirname, 'dist'),
-    emptyOutDir: true
+    emptyOutDir: true,
+    chunkSizeWarningLimit: 1000
   },
   publicDir: path.resolve(__dirname, 'public'),
   server: {
