@@ -82,48 +82,68 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const { msg_signature, timestamp, nonce, encrypt } = req.query;
     
     if (!msg_signature || !timestamp || !nonce || !encrypt) {
-      return res.status(400).send('缺少参数');
+      return res.status(200).json({
+        encrypt: encrypt || '',
+        msg_signature: msg_signature || '',
+        timestamp: timestamp || '',
+        nonce: nonce || ''
+      });
     }
     
     const isVerified = verifySignature(
       DINGTALK_TOKEN,
-      timestamp as string,
-      nonce as string,
-      msg_signature as string
+      String(timestamp),
+      String(nonce),
+      String(encrypt)
     );
     
     if (!isVerified) {
-      return res.status(401).send('签名验证失败');
+      return res.status(200).json({
+        encrypt: encrypt || '',
+        msg_signature: msg_signature || '',
+        timestamp: timestamp || '',
+        nonce: nonce || ''
+      });
     }
     
-    const decrypted = decryptAES(encrypt as string, DINGTALK_AES_KEY);
+    const decrypted = decryptAES(String(encrypt), DINGTALK_AES_KEY);
     return res.status(200).json({
+      encrypt: decrypted,
       msg_signature,
       timestamp,
-      nonce,
-      encrypt: decrypted
+      nonce
     });
   } else if (req.method === 'POST') {
-    const { msg_signature, timestamp, nonce } = req.headers;
-    const { encrypt } = req.body;
+    const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
+    const { msg_signature, timestamp, nonce, encrypt } = body;
     
     if (!msg_signature || !timestamp || !nonce || !encrypt) {
-      return res.status(400).send('缺少参数');
+      return res.status(200).json({
+        encrypt: encrypt || '',
+        msg_signature: msg_signature || '',
+        timestamp: timestamp || '',
+        nonce: nonce || ''
+      });
     }
     
     const isVerified = verifySignature(
       DINGTALK_TOKEN,
-      timestamp as string,
-      nonce as string,
-      msg_signature as string
+      String(timestamp),
+      String(nonce),
+      String(encrypt)
     );
     
     if (!isVerified) {
-      return res.status(401).send('签名验证失败');
+      return res.status(200).json({
+        encrypt: encrypt || '',
+        msg_signature: msg_signature || '',
+        timestamp: timestamp || '',
+        nonce: nonce || ''
+      });
     }
     
     try {
-      const decrypted = decryptAES(encrypt, DINGTALK_AES_KEY);
+      const decrypted = decryptAES(String(encrypt), DINGTALK_AES_KEY);
       console.log('收到钉钉消息:', decrypted);
       
       const messageData = JSON.parse(decrypted);
@@ -135,18 +155,26 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       }
       
       return res.status(200).json({
-        status: 'success',
-        message: '消息处理成功',
-        received: decrypted
+        encrypt: '',
+        msg_signature: msg_signature || '',
+        timestamp: timestamp || '',
+        nonce: nonce || ''
       });
     } catch (error) {
       console.error('处理消息失败:', error);
-      return res.status(500).json({
-        status: 'error',
-        message: '处理消息失败'
+      return res.status(200).json({
+        encrypt: '',
+        msg_signature: msg_signature || '',
+        timestamp: timestamp || '',
+        nonce: nonce || ''
       });
     }
   } else {
-    return res.status(405).send('不支持的请求方法');
+    return res.status(200).json({
+      encrypt: '',
+      msg_signature: '',
+      timestamp: '',
+      nonce: ''
+    });
   }
 }
